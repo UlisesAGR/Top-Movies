@@ -58,11 +58,9 @@ class LoginActivity : AppCompatActivity() {
                 is LoginUiState.Loading -> {
                     statusLoading(state.isLoading)
                 }
-
                 is LoginUiState.StatusLoginForm -> {
                     validateStatusLoginForm(state.status)
                 }
-
                 is LoginUiState.GoToMovies -> {
                     nextActivityFinish(MoviesActivity())
                 }
