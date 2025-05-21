@@ -46,7 +46,7 @@
 
     </LinearLayout>
 
-    <com.topmovies.mobile.presentation.movies.ui.widget.EmptyState
+    <com.topmovies.mobile.widgets.emptystate.EmptyState
         android:id="@+id/moviesEmptyState"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -56,7 +56,7 @@
         app:titleEmptyState="@string/no_movies"
         tools:visibility="visible" />
 
-    <com.topmovies.mobile.presentation.movies.ui.widget.Loader
+    <com.topmovies.mobile.widgets.loader.Loader
         android:id="@+id/moviesProgressBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

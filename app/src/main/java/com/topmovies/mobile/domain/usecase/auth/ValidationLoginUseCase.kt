@@ -6,7 +6,7 @@
 package com.topmovies.mobile.domain.usecase.auth
 
 import com.topmovies.mobile.domain.model.auth.LoginStatus
-import com.topmovies.mobile.util.isValidEmail
+import com.topmovies.mobile.utils.extension.isValidEmail
 import javax.inject.Inject
 
 class ValidationLoginUseCase @Inject constructor() {

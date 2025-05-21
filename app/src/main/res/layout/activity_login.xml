@@ -113,7 +113,7 @@
 
     </LinearLayout>
 
-    <com.topmovies.mobile.presentation.movies.ui.widget.Loader
+    <com.topmovies.mobile.widgets.loader.Loader
         android:id="@+id/loginProgressBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

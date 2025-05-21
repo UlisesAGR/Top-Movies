@@ -68,6 +68,9 @@ android {
 }
 
 dependencies {
+    // Modules
+    implementation(project(":utils"))
+    implementation(project(":widgets"))
     // Libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.bundles.androidx.lifecycle.libs)

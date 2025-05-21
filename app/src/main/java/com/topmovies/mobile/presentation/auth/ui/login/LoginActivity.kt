@@ -13,14 +13,14 @@ import com.topmovies.mobile.databinding.ActivityLoginBinding
 import com.topmovies.mobile.domain.model.auth.LoginStatus
 import com.topmovies.mobile.presentation.auth.viewmodel.LoginUiState
 import com.topmovies.mobile.presentation.auth.viewmodel.LoginViewModel
-import com.topmovies.mobile.presentation.movies.ui.view.activity.MoviesActivity
-import com.topmovies.mobile.util.collect
-import com.topmovies.mobile.util.gone
-import com.topmovies.mobile.util.hideSoftKeyboard
-import com.topmovies.mobile.util.nextActivityFinish
-import com.topmovies.mobile.util.onTextChanged
-import com.topmovies.mobile.util.show
-import com.topmovies.mobile.util.viewBinding
+import com.topmovies.mobile.presentation.movies.ui.activity.MoviesActivity
+import com.topmovies.mobile.utils.extension.collect
+import com.topmovies.mobile.utils.extension.nextActivityFinish
+import com.topmovies.mobile.utils.ui.gone
+import com.topmovies.mobile.utils.ui.hideSoftKeyboard
+import com.topmovies.mobile.utils.ui.onTextChanged
+import com.topmovies.mobile.utils.ui.show
+import com.topmovies.mobile.utils.ui.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
     private fun setListeners() = with(binding) {
         sigInButton.setOnClickListener {
             it.hideSoftKeyboard()
+            clearFocus()
             loginViewModel.validateLogin(
                 email = emailEditText.text.toString(),
                 password = passwordEditText.text.toString(),
@@ -77,7 +78,9 @@ class LoginActivity : AppCompatActivity() {
         when (status) {
             LoginStatus.EMPTY_EMAIL -> emailBox.error = getString(R.string.enter_your_email)
             LoginStatus.INVALID_EMAIL -> emailBox.error = getString(R.string.email_invalid)
-            LoginStatus.EMPTY_PASSWORD -> passwordBox.error = getString(R.string.enter_your_password)
+            LoginStatus.EMPTY_PASSWORD -> passwordBox.error =
+                getString(R.string.enter_your_password)
+
             else -> {}
         }
     }
@@ -89,5 +92,10 @@ class LoginActivity : AppCompatActivity() {
         passwordEditText.onTextChanged {
             passwordBox.error = null
         }
+    }
+
+    private fun clearFocus() = with(binding) {
+        emailEditText.clearFocus()
+        passwordEditText.clearFocus()
     }
 }

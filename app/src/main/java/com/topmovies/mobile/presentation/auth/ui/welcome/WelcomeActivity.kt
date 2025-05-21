@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.topmovies.mobile.databinding.ActivityWelcomeBinding
 import com.topmovies.mobile.presentation.auth.ui.login.LoginActivity
-import com.topmovies.mobile.util.nextActivity
-import com.topmovies.mobile.util.viewBinding
+import com.topmovies.mobile.utils.extension.nextActivity
+import com.topmovies.mobile.utils.ui.viewBinding
 
 class WelcomeActivity : AppCompatActivity() {
 

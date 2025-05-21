@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/il_logo" />
 
-        <com.topmovies.mobile.presentation.movies.ui.widget.CircleRating
+        <com.topmovies.mobile.widgets.circlerating.CircleRating
             android:id="@+id/textCircleRating"
             android:layout_width="50dp"
             android:layout_height="50dp"

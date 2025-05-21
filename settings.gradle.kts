@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Top Movies"
 include(":app")
- 
+include(":widgets")
+include(":utils")

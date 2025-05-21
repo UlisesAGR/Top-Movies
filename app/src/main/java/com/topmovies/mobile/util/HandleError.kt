@@ -7,6 +7,7 @@ package com.topmovies.mobile.util
 
 import androidx.fragment.app.FragmentActivity
 import com.topmovies.mobile.R
+import com.topmovies.mobile.utils.logger.log
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketException
