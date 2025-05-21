@@ -98,6 +98,7 @@ dependencies {
     testImplementation(libs.test.junit)
     testImplementation(libs.test.coroutines)
     testImplementation(libs.test.hilt)
+    testImplementation(libs.test.turbine)
     testImplementation(libs.bundles.test.mockito.libs)
     testImplementation(libs.test.robolectric)
     androidTestImplementation(libs.androidTest.junit)
