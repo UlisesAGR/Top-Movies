@@ -3,9 +3,9 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.presentation.viewmodel
+package com.topmovies.mobile.presentation.movies.viewmodel
 
-import com.topmovies.mobile.domain.model.MovieModel
+import com.topmovies.mobile.domain.model.movies.MovieModel
 
 sealed class MoviesUiState {
     internal data class Loading(val isLoading: Boolean) : MoviesUiState()

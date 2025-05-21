@@ -1,0 +1,45 @@
+<!--
+ - strings.xml - spanish
+ - Created by Ulises Gonzalez
+ - Copyright (c) 2025. All rights reserved
+-->
+<resources>
+
+    <!-- Error -->
+    <string name="check_your_internet_connection">Verifica tu conexión a internet</string>
+    <string name="timeout">Tiempo de espera agotado</string>
+    <string name="there_are_problems_with_the_servant_try_again_later">Hay problemas con el servidor, intenta nuevamente más tarde</string>
+    <string name="please_try_again_later">Por el momento no podemos realizar esta acción, por favor intenta más tarde</string>
+
+    <!-- Welcome Screen -->
+    <string name="image">Imagen</string>
+    <string name="watch_now_your_favorites_movies">Mira ahora tus películas favoritas</string>
+    <string name="you_can_see_the_top_10_of_your_favorite_movies_to_watch_whenever_you_want_and_learn_more_about_them">Puedes ver el top 10 de tus películas favoritas para verlas cuando quieras y conocer más sobre ellas</string>
+    <string name="continue_text">Continuar</string>
+
+    <!-- Login Screen -->
+    <string name="welcome_back">Bienvenido de nuevo</string>
+    <string name="here_you_can_login_with_your_credentials">Aquí puedes iniciar sesión con tus credenciales</string>
+    <string name="enter_your_email">Ingresa tu correo electrónico</string>
+    <string name="email">Correo electrónico</string>
+    <string name="enter_your_password">Ingresa tu contraseña</string>
+    <string name="password">Contraseña</string>
+    <string name="sign_in">Iniciar sesión</string>
+
+    <!-- Container Movies Screen -->
+    <string name="loading">Cargando</string>
+
+    <!-- Movies Screen -->
+    <string name="no_movies">Sin películas</string>
+    <string name="here_you_can_see_the_best_movies">Aquí puedes ver las mejores películas</string>
+    <string name="popular_movies">Top 10 Películas</string>
+
+    <!-- Description Screen -->
+    <string name="description">Descripción</string>
+    <string name="back">Atrás</string>
+
+    <!-- Login Screen -->
+    <string name="email_invalid">Correo electrónico inválido</string>
+
+</resources>
+

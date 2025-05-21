@@ -9,7 +9,7 @@ import com.topmovies.mobile.data.local.source.MoviesLocalSource
 import com.topmovies.mobile.data.netwotk.source.MoviesNetworkSource
 import com.topmovies.mobile.domain.mapper.toDomain
 import com.topmovies.mobile.domain.mapper.toEntity
-import com.topmovies.mobile.domain.model.MovieModel
+import com.topmovies.mobile.domain.model.movies.MovieModel
 import com.topmovies.mobile.domain.repository.MoviesRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

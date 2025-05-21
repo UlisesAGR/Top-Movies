@@ -8,7 +8,7 @@ package com.topmovies.mobile.domain.mapper
 import com.topmovies.mobile.BuildConfig.IMAGE_BASE_URL
 import com.topmovies.mobile.data.local.model.MovieEntity
 import com.topmovies.mobile.data.netwotk.model.MovieResponse
-import com.topmovies.mobile.domain.model.MovieModel
+import com.topmovies.mobile.domain.model.movies.MovieModel
 
 fun MovieResponse.toEntity(): MovieEntity =
     MovieEntity(

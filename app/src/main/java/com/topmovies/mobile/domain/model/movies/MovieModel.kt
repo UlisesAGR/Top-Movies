@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.domain.model
+package com.topmovies.mobile.domain.model.movies
 
 data class MovieModel(
     val id: Int,

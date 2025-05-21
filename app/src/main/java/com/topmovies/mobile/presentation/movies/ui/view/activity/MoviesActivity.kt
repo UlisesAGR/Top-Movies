@@ -3,18 +3,18 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.presentation.ui.view.activity
+package com.topmovies.mobile.presentation.movies.ui.view.activity
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.topmovies.mobile.R
 import com.topmovies.mobile.databinding.ActivityMoviesBinding
-import com.topmovies.mobile.domain.model.MovieModel
-import com.topmovies.mobile.presentation.ui.view.adapter.MoviesAdapter
-import com.topmovies.mobile.presentation.ui.view.dialog.DetailDialogConfig
-import com.topmovies.mobile.presentation.viewmodel.MoviesUiState
-import com.topmovies.mobile.presentation.viewmodel.MoviesViewModel
+import com.topmovies.mobile.domain.model.movies.MovieModel
+import com.topmovies.mobile.presentation.movies.ui.view.adapter.MoviesAdapter
+import com.topmovies.mobile.presentation.movies.ui.view.dialog.DetailDialogConfig
+import com.topmovies.mobile.presentation.movies.viewmodel.MoviesUiState
+import com.topmovies.mobile.presentation.movies.viewmodel.MoviesViewModel
 import com.topmovies.mobile.util.collect
 import com.topmovies.mobile.util.gone
 import com.topmovies.mobile.util.show
@@ -85,8 +85,8 @@ class MoviesActivity : AppCompatActivity() {
     }
 
     private fun statusLoading(isLoading: Boolean) = with(binding) {
-        if (isLoading) loginProgressBar.show()
-        else loginProgressBar.gone()
+        if (isLoading) moviesProgressBar.show()
+        else moviesProgressBar.gone()
     }
 
     private fun validateEmptyState(itemCount: Int) = with(binding) {

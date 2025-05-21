@@ -3,12 +3,13 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.presentation.ui.view.activity
+package com.topmovies.mobile.presentation.auth.ui.welcome
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.topmovies.mobile.databinding.ActivityWelcomeBinding
+import com.topmovies.mobile.presentation.auth.ui.login.LoginActivity
 import com.topmovies.mobile.util.nextActivity
 import com.topmovies.mobile.util.viewBinding
 

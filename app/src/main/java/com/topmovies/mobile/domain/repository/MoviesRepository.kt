@@ -5,7 +5,7 @@
  */
 package com.topmovies.mobile.domain.repository
 
-import com.topmovies.mobile.domain.model.MovieModel
+import com.topmovies.mobile.domain.model.movies.MovieModel
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {

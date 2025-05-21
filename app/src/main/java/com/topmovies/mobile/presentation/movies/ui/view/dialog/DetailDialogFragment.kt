@@ -3,14 +3,14 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.presentation.ui.view.dialog
+package com.topmovies.mobile.presentation.movies.ui.view.dialog
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import com.topmovies.mobile.R
 import com.topmovies.mobile.databinding.FragmentDetailBinding
-import com.topmovies.mobile.domain.model.MovieModel
+import com.topmovies.mobile.domain.model.movies.MovieModel
 import com.topmovies.mobile.util.load
 import com.topmovies.mobile.util.onBackPressed
 import com.topmovies.mobile.util.setAnimationEnd

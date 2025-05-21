@@ -39,7 +39,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_shadow" />
 
-            <com.topmovies.mobile.presentation.ui.widget.CircleRating
+            <com.topmovies.mobile.presentation.movies.ui.widget.CircleRating
                 android:id="@+id/textCircleRating"
                 android:layout_width="50dp"
                 android:layout_height="50dp"

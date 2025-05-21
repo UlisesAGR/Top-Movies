@@ -45,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/margin.big"
+            android:justificationMode="inter_word"
             android:text="@string/you_can_see_the_top_10_of_your_favorite_movies_to_watch_whenever_you_want_and_learn_more_about_them" />
 
         <Button

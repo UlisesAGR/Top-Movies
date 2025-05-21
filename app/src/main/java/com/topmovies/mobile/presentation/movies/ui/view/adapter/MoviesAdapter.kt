@@ -3,14 +3,14 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.presentation.ui.view.adapter
+package com.topmovies.mobile.presentation.movies.ui.view.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.topmovies.mobile.databinding.ItemMovieBinding
-import com.topmovies.mobile.domain.model.MovieModel
+import com.topmovies.mobile.domain.model.movies.MovieModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

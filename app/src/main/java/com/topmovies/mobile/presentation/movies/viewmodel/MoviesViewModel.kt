@@ -3,12 +3,12 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.presentation.viewmodel
+package com.topmovies.mobile.presentation.movies.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.topmovies.mobile.domain.usecase.GetMovieByIdUseCase
-import com.topmovies.mobile.domain.usecase.GetTopRatedMoviesUseCase
+import com.topmovies.mobile.domain.usecase.movies.GetMovieByIdUseCase
+import com.topmovies.mobile.domain.usecase.movies.GetTopRatedMoviesUseCase
 import com.topmovies.mobile.util.Constants.MOVIES_COUNT
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

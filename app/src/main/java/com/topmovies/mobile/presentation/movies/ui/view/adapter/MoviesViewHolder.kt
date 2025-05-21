@@ -3,12 +3,12 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.presentation.ui.view.adapter
+package com.topmovies.mobile.presentation.movies.ui.view.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.topmovies.mobile.R
 import com.topmovies.mobile.databinding.ItemMovieBinding
-import com.topmovies.mobile.domain.model.MovieModel
+import com.topmovies.mobile.domain.model.movies.MovieModel
 import com.topmovies.mobile.util.load
 import com.topmovies.mobile.util.setOnSafeClickListener
 import com.topmovies.mobile.util.toOneDecimalString

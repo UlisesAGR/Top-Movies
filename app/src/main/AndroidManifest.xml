@@ -17,17 +17,17 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".presentation.ui.view.activity.MoviesActivity"
+            android:name=".presentation.movies.ui.view.activity.MoviesActivity"
             android:exported="false"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name="com.topmovies.mobile.presentation.ui.view.activity.LoginActivity"
+            android:name="com.topmovies.mobile.presentation.auth.ui.login.LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".presentation.ui.view.activity.WelcomeActivity"
+            android:name=".presentation.auth.ui.welcome.WelcomeActivity"
             android:exported="true"
             android:theme="@style/Splash.Theme.Starting"
             android:windowSoftInputMode="stateHidden|adjustPan">

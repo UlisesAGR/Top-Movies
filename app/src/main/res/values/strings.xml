@@ -10,6 +10,7 @@
     <string name="timeout">Timeout</string>
     <string name="there_are_problems_with_the_servant_try_again_later">There are problems with the servant, try again later</string>
     <string name="please_try_again_later">At the moment we cannot perform this action, please try again later</string>
+    <string name="n_a" translatable="false">N/A</string>
 
     <!-- Welcome Screen -->
     <string name="image">Image</string>
@@ -37,6 +38,8 @@
     <!-- Description Screen -->
     <string name="description">Description</string>
     <string name="back">Back</string>
-    <string name="n_a">N/A</string>
+
+    <!-- Login Screen -->
+    <string name="email_invalid">Email invalid</string>
 
 </resources>

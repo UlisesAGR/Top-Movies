@@ -11,11 +11,13 @@ import android.view.KeyEvent
 import androidx.fragment.app.FragmentActivity
 
 fun FragmentActivity.nextActivityFinish(destination: FragmentActivity) {
-    Intent(this, destination::class.java).apply {
-        startActivity(this)
-        finish()
+    val intent = Intent(this, destination::class.java).apply {
+        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
     }
+    startActivity(intent)
+    finish()
 }
+
 
 fun FragmentActivity.nextActivity(destination: FragmentActivity) {
     Intent(this, destination::class.java).apply {

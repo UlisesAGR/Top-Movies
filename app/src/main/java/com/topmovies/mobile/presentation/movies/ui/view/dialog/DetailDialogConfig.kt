@@ -3,11 +3,11 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.presentation.ui.view.dialog
+package com.topmovies.mobile.presentation.movies.ui.view.dialog
 
 import androidx.fragment.app.FragmentManager
-import com.topmovies.mobile.domain.model.MovieModel
-import com.topmovies.mobile.presentation.ui.view.dialog.DetailDialogFragment.Companion.DETAIL_DIALOG_FRAGMENT_TAG
+import com.topmovies.mobile.domain.model.movies.MovieModel
+import com.topmovies.mobile.presentation.movies.ui.view.dialog.DetailDialogFragment.Companion.DETAIL_DIALOG_FRAGMENT_TAG
 
 class DetailDialogConfig(val movie: MovieModel?) {
 

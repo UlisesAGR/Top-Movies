@@ -39,7 +39,7 @@
 
     </LinearLayout>
 
-    <com.topmovies.mobile.presentation.ui.widget.EmptyState
+    <com.topmovies.mobile.presentation.movies.ui.widget.EmptyState
         android:id="@+id/moviesEmptyState"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,8 +49,8 @@
         app:titleEmptyState="@string/here_you_can_see_the_best_movies"
         tools:visibility="gone" />
 
-    <com.topmovies.mobile.presentation.ui.widget.Loader
-        android:id="@+id/loginProgressBar"
+    <com.topmovies.mobile.presentation.movies.ui.widget.Loader
+        android:id="@+id/moviesProgressBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusable="false"

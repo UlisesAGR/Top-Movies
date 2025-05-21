@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.presentation.ui.widget
+package com.topmovies.mobile.presentation.movies.ui.widget
 
 import android.content.Context
 import android.util.AttributeSet

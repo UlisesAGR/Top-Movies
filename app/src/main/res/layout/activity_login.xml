@@ -3,15 +3,13 @@
  - Created by Ulises Gonzalez
  - Copyright (c) 2025. All rights reserved
 -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/loginConstraintLayout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootFrameLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:layout_height="match_parent">
+
 
     <LinearLayout
         android:id="@+id/loginLinearLayout"
@@ -19,10 +17,16 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin.extra"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginVertical="@dimen/margin.extra"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/il_logo" />
 
         <TextView
             android:id="@+id/titleTextView"
@@ -109,4 +113,13 @@
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.topmovies.mobile.presentation.movies.ui.widget.Loader
+        android:id="@+id/loginProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="false"
+        android:visibility="gone"
+        app:textLoader="@string/loading"
+        tools:visibility="gone" />
+
+</FrameLayout>
