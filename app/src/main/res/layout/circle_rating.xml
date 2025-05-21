@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - circle_rating.xml
+ - Created by Ulises Gonzalez
+ - Copyright (c) 2023. All rights reserved.
+-->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/circleRatingTextView"
+    style="@style/textRating"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:background="@drawable/bg_circle"
+    android:gravity="center"
+    tools:text="50%" />

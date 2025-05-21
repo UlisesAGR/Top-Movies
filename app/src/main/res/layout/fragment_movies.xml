@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - fragment_movies.xml
+ - Created by Ulises Gonzalez
+ - Copyright (c) 2023. All rights reserved.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootFrameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding.big"
+            android:text="@string/popular_movies" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/moviesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="@dimen/padding.normal"
+            android:paddingBottom="@dimen/padding.big"
+            android:transitionGroup="true"
+            android:saveEnabled="true"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:itemCount="10"
+            tools:listitem="@layout/item_movie" />
+
+    </LinearLayout>
+
+    <com.topmovies.mobile.presentation.ui.widget.EmptyState
+        android:id="@+id/moviesEmptyState"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:imageEmptyState="@drawable/il_relaunch_day"
+        app:subtitleEmptyState="@string/no_movies"
+        app:titleEmptyState="@string/here_you_can_see_the_best_movies"
+        tools:visibility="gone" />
+
+</FrameLayout>

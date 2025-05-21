@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - styles.xml - dark
+ - Created by Ulises Gonzalez
+ - Copyright (c) 2025. All rights reserved
+-->
+<resources>
+
+    <style name="Ripple">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="Ripple.Borderless">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="editText">
+        <item name="android:textColor">@color/md_theme_light_onBackground</item>
+        <item name="android:textColorHint">@color/md_theme_light_onBackground</item>
+    </style>
+
+    <style name="collapsingToolbar">
+        <item name="contentScrim">@color/md_theme_dark_background</item>
+    </style>
+
+</resources>

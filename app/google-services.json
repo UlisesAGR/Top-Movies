@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "278507346519",
+    "project_id": "top-movies-f7d7c",
+    "storage_bucket": "top-movies-f7d7c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278507346519:android:e2b9e4ae25c07080492112",
+        "android_client_info": {
+          "package_name": "com.topmovies.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA53MYQIcvQcFctgsOfX5ifITHM5cl2QGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

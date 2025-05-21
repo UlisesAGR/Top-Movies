@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - item_movie.xml
+ - Created by Ulises Gonzalez
+ - Copyright (c) 2023. All rights reserved.
+-->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootMaterialCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin.small">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/movieImageView"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:contentDescription="@string/image"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/il_logo" />
+
+        <com.topmovies.mobile.presentation.ui.widget.CircleRating
+            android:id="@+id/textCircleRating"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="@dimen/margin.small"
+            app:layout_constraintBottom_toBottomOf="@+id/movieImageView"
+            app:layout_constraintEnd_toEndOf="@+id/movieImageView"
+            app:layout_constraintTop_toBottomOf="@+id/movieImageView"
+            tools:textCircleRating="50%" />
+
+        <TextView
+            android:id="@+id/titleTextView"
+            style="@style/textNormalBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/padding.big"
+            android:layout_marginTop="@dimen/margin.small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCircleRating"
+            tools:text="Movie" />
+
+        <TextView
+            android:id="@+id/dateTextView"
+            style="@style/textNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/padding.big"
+            android:paddingBottom="@dimen/padding.big"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            tools:text="01 oct 2024" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
