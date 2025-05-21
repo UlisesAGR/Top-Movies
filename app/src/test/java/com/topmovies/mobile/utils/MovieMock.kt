@@ -6,6 +6,9 @@
 package com.topmovies.mobile.utils
 
 import com.topmovies.mobile.data.local.model.MovieEntity
+import com.topmovies.mobile.data.netwotk.model.MovieDataResponse
+import com.topmovies.mobile.data.netwotk.model.MovieResponse
+import retrofit2.Response
 
 object MovieMock {
 
@@ -36,4 +39,38 @@ object MovieMock {
             posterPath = "www.url.com",
         ),
     )
+
+    val movieResponse = MovieResponse(
+        id = 0,
+        title = "Movie",
+        releaseDate = "10-03-1200",
+        overview = "Description",
+        voteAverage = 0f,
+        posterPath = "www.url.com",
+    )
+
+    val moviesResponse = listOf(
+        MovieResponse(
+            id = 0,
+            title = "Movie",
+            releaseDate = "10-03-1200",
+            overview = "Description",
+            voteAverage = 0f,
+            posterPath = "www.url.com",
+        ),
+        MovieResponse(
+            id = 2,
+            title = "Movie",
+            releaseDate = "10-03-1200",
+            overview = "Description",
+            voteAverage = 0f,
+            posterPath = "www.url.com",
+        ),
+    )
+
+    val moviesDataResponse: Response<MovieDataResponse> =
+        Response.success(MovieDataResponse(results = moviesResponse))
+
+    val movieDataResponse: Response<MovieResponse?> =
+        Response.success(movieResponse)
 }
