@@ -27,7 +27,6 @@ class MoviesViewHolder(
             setMovieImage(posterPath)
             textCircleRating.setText(voteAverage.toOneDecimalString())
             titleTextView.text = title ?: context.getString(R.string.n_a)
-            dateTextView.text = releaseDate ?: context.getString(R.string.n_a)
             itemView.setOnSafeClickListener { onMovieSelected(this) }
         }
     }
