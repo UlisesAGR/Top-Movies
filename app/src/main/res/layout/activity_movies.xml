@@ -22,20 +22,27 @@
             android:padding="@dimen/padding.big"
             android:text="@string/popular_movies" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/moviesRecyclerView"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:nestedScrollingEnabled="false"
-            android:paddingHorizontal="@dimen/padding.normal"
-            android:paddingBottom="@dimen/padding.big"
-            android:saveEnabled="true"
-            android:transitionGroup="true"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            tools:itemCount="10"
-            tools:listitem="@layout/item_movie" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/moviesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:paddingHorizontal="@dimen/padding.normal"
+                android:paddingBottom="@dimen/padding.big"
+                android:saveEnabled="true"
+                android:transitionGroup="true"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="10"
+                tools:listitem="@layout/item_movie" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 
@@ -45,9 +52,9 @@
         android:layout_height="match_parent"
         android:visibility="gone"
         app:imageEmptyState="@drawable/il_relaunch_day"
-        app:subtitleEmptyState="@string/no_movies"
-        app:titleEmptyState="@string/here_you_can_see_the_best_movies"
-        tools:visibility="gone" />
+        app:subtitleEmptyState="@string/here_you_can_see_the_best_movies"
+        app:titleEmptyState="@string/no_movies"
+        tools:visibility="visible" />
 
     <com.topmovies.mobile.presentation.movies.ui.widget.Loader
         android:id="@+id/moviesProgressBar"

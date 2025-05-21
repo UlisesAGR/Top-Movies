@@ -40,9 +40,17 @@ class MoviesActivity : AppCompatActivity() {
 
     private fun setInitUi() {
         moviesViewModel.getTopRatedMovies()
+        setListeners()
         setMoviesAdapter()
         setMoviesRecyclerView()
         setFlows()
+    }
+
+    private fun setListeners() = with(binding) {
+        swipeRefreshLayout.setOnRefreshListener {
+            moviesViewModel.getTopRatedMovies()
+            swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun setMoviesAdapter() {
@@ -67,6 +75,7 @@ class MoviesActivity : AppCompatActivity() {
                     statusLoading(state.isLoading)
                 }
                 is MoviesUiState.Error -> {
+                    binding.moviesEmptyState.show()
                     toast(toUserMessage(state.cause))
                 }
                 is MoviesUiState.Movies -> {
