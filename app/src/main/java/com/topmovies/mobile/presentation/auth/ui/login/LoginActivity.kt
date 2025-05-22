@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
                     validateStatusLoginForm(state.status)
                 }
                 is LoginUiState.GoToMovies -> {
-                    nextActivityFinish(MoviesActivity())
+                    goToMovies()
                 }
             }
         }
@@ -97,5 +97,13 @@ class LoginActivity : AppCompatActivity() {
     private fun clearFocus() = with(binding) {
         emailEditText.clearFocus()
         passwordEditText.clearFocus()
+    }
+
+    private fun goToMovies() {
+        nextActivityFinish(
+            destination = MoviesActivity(),
+            animIn = R.anim.fade_in,
+            animOut = R.anim.fade_out,
+        )
     }
 }
