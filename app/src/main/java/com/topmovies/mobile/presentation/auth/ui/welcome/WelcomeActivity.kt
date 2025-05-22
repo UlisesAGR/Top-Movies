@@ -8,6 +8,7 @@ package com.topmovies.mobile.presentation.auth.ui.welcome
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.topmovies.mobile.R
 import com.topmovies.mobile.databinding.ActivityWelcomeBinding
 import com.topmovies.mobile.presentation.auth.ui.login.LoginActivity
 import com.topmovies.mobile.utils.extension.nextActivity
@@ -31,7 +32,15 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun setListeners() {
         binding.continueButton.setOnClickListener {
-            nextActivity(LoginActivity())
+            goToLogin()
         }
+    }
+
+    private fun goToLogin() {
+        nextActivity(
+            destination = LoginActivity(),
+            animIn = R.anim.slide_in_left,
+            animOut = R.anim.slide_out_left,
+        )
     }
 }

@@ -11,11 +11,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.topmovies.mobile.R
 import com.topmovies.mobile.databinding.ActivityLoginBinding
 import com.topmovies.mobile.domain.model.auth.LoginStatus
+import com.topmovies.mobile.presentation.auth.ui.welcome.WelcomeActivity
 import com.topmovies.mobile.presentation.auth.viewmodel.LoginUiState
 import com.topmovies.mobile.presentation.auth.viewmodel.LoginViewModel
 import com.topmovies.mobile.presentation.movies.ui.activity.MoviesActivity
 import com.topmovies.mobile.utils.extension.collect
 import com.topmovies.mobile.utils.extension.nextActivityFinish
+import com.topmovies.mobile.utils.extension.onBackPressed
 import com.topmovies.mobile.utils.ui.gone
 import com.topmovies.mobile.utils.ui.hideSoftKeyboard
 import com.topmovies.mobile.utils.ui.onTextChanged
@@ -42,6 +44,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setListeners() = with(binding) {
+        backImageButton.setOnClickListener {
+            goToWelcome()
+        }
+        onBackPressed {
+            goToWelcome()
+        }
         sigInButton.setOnClickListener {
             it.hideSoftKeyboard()
             clearFocus()
@@ -78,9 +86,7 @@ class LoginActivity : AppCompatActivity() {
         when (status) {
             LoginStatus.EMPTY_EMAIL -> emailBox.error = getString(R.string.enter_your_email)
             LoginStatus.INVALID_EMAIL -> emailBox.error = getString(R.string.email_invalid)
-            LoginStatus.EMPTY_PASSWORD -> passwordBox.error =
-                getString(R.string.enter_your_password)
-
+            LoginStatus.EMPTY_PASSWORD -> passwordBox.error = getString(R.string.enter_your_password)
             else -> {}
         }
     }
@@ -104,6 +110,14 @@ class LoginActivity : AppCompatActivity() {
             destination = MoviesActivity(),
             animIn = R.anim.fade_in,
             animOut = R.anim.fade_out,
+        )
+    }
+
+    private fun goToWelcome() {
+        nextActivityFinish(
+            destination = WelcomeActivity(),
+            animIn = R.anim.slide_in_right,
+            animOut = R.anim.slide_out_right,
         )
     }
 }

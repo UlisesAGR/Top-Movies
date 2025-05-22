@@ -6,7 +6,7 @@
 <resources>
 
     <style name="primaryButton">
-        <item name="android:backgroundTint">@color/md_theme_light_primary</item>
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">65dp</item>
         <item name="android:textSize">16sp</item>
@@ -14,7 +14,7 @@
     </style>
 
     <style name="secondaryButton">
-        <item name="android:backgroundTint">@color/md_theme_light_tertiary</item>
+        <item name="android:backgroundTint">?attr/colorSecondary</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">65dp</item>
         <item name="android:textSize">16sp</item>

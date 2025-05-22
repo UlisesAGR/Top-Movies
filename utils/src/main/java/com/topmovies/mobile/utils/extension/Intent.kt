@@ -11,6 +11,9 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Build
 import android.view.KeyEvent
+import androidx.activity.ComponentActivity
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 
 fun FragmentActivity.nextActivityFinish(destination: FragmentActivity) {
@@ -34,6 +37,7 @@ fun FragmentActivity.nextActivityFinish(
     animOut: Int = 0,
 ) {
     Intent(this, destination::class.java).apply {
+        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(this)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, animIn, animOut)
@@ -42,6 +46,39 @@ fun FragmentActivity.nextActivityFinish(
         }
         finish()
     }
+}
+
+fun FragmentActivity.nextActivity(
+    destination: FragmentActivity,
+    animIn: Int = 0,
+    animOut: Int = 0,
+) {
+    Intent(this, destination::class.java).apply {
+        startActivity(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, animIn, animOut)
+        } else {
+            overridePendingTransition(animIn, animOut)
+        }
+    }
+}
+
+inline fun ComponentActivity.onBackPressed(crossinline action: () -> Unit) {
+    val callback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            action()
+        }
+    }
+    onBackPressedDispatcher.addCallback(this, callback)
+}
+
+inline fun Fragment.onBackPressed(crossinline action: () -> Unit) {
+    val callback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            action()
+        }
+    }
+    requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 }
 
 fun Dialog?.onBackPressed(onClick: () -> Unit) {

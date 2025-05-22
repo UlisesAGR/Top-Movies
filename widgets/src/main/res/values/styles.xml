@@ -18,16 +18,16 @@
     </style>
 
     <style name="editText">
-        <item name="android:textColor">@color/md_theme_light_onBackground</item>
-        <item name="android:textColorHint">@color/md_theme_light_onBackground</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textColorHint">?attr/colorOnPrimary</item>
     </style>
 
     <style name="collapsingToolbar">
-        <item name="contentScrim">@color/md_theme_light_background</item>
+        <item name="contentScrim">?attr/android:colorBackground</item>
     </style>
 
     <style name="background">
-        <item name="android:background">@color/md_theme_light_background</item>
+        <item name="android:background">?attr/android:colorBackground</item>
     </style>
 
 </resources>
