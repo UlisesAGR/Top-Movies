@@ -52,7 +52,6 @@ class LoginActivity : AppCompatActivity() {
         }
         sigInButton.setOnClickListener {
             it.hideSoftKeyboard()
-            clearFocus()
             loginViewModel.validateLogin(
                 email = emailEditText.text.toString(),
                 password = passwordEditText.text.toString(),
@@ -71,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
                     validateStatusLoginForm(state.status)
                 }
                 is LoginUiState.GoToMovies -> {
+                    clearEditText()
                     goToMovies()
                 }
             }
@@ -87,7 +87,7 @@ class LoginActivity : AppCompatActivity() {
             LoginStatus.EMPTY_EMAIL -> emailBox.error = getString(R.string.enter_your_email)
             LoginStatus.INVALID_EMAIL -> emailBox.error = getString(R.string.email_invalid)
             LoginStatus.EMPTY_PASSWORD -> passwordBox.error = getString(R.string.enter_your_password)
-            else -> {}
+            else -> clearFocus()
         }
     }
 
@@ -103,6 +103,11 @@ class LoginActivity : AppCompatActivity() {
     private fun clearFocus() = with(binding) {
         emailEditText.clearFocus()
         passwordEditText.clearFocus()
+    }
+
+    private fun clearEditText() = with(binding) {
+        emailEditText.setText("")
+        passwordEditText.setText("")
     }
 
     private fun goToMovies() {

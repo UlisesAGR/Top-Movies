@@ -38,16 +38,16 @@ class LoginViewModel @Inject constructor(
             LoginStatus.EMPTY_PASSWORD ->
                 _loginUiState.emit(LoginUiState.StatusLoginForm(status = LoginStatus.EMPTY_PASSWORD))
 
-            LoginStatus.SUCCESS -> login()
+            LoginStatus.SUCCESS -> {
+                _loginUiState.emit(LoginUiState.StatusLoginForm(status = LoginStatus.SUCCESS))
+                login()
+            }
         }
     }
 
     private fun login() = viewModelScope.launch {
         _loginUiState.emit(LoginUiState.Loading(isLoading = true))
-        delay(2000)
-        _loginUiState.apply {
-            emit(LoginUiState.GoToMovies)
-            emit(LoginUiState.Loading(isLoading = false))
-        }
+        delay(3000)
+        _loginUiState.emit(LoginUiState.GoToMovies)
     }
 }

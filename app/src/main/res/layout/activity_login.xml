@@ -67,7 +67,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/margin.big"
+            android:layout_marginBottom="@dimen/margin.normal"
             android:hint="@string/email"
             app:endIconMode="clear_text"
             app:startIconContentDescription="@string/image"

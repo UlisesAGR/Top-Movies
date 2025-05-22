@@ -1,7 +1,7 @@
-<!--
- - bg_circle.xml
+<?xml version="1.0" encoding="utf-8"?><!--
+ - bg_circle_stroke.xml
  - Created by Ulises Gonzalez
- - Copyright (c) 2023. All rights reserved.
+ - Copyright (c) 2025. All rights reserved
 -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
@@ -13,3 +13,4 @@
         android:color="#FFFFFF" />
 
 </shape>
+

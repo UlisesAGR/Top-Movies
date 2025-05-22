@@ -9,6 +9,6 @@
     style="@style/textRating"
     android:layout_width="50dp"
     android:layout_height="50dp"
-    android:background="@drawable/bg_circle"
+    android:background="@drawable/bg_circle_stroke"
     android:gravity="center"
     tools:text="50%" />
