@@ -5,10 +5,9 @@ Conocimientos aplicados:
 • Fundamentales
 o Android Studio
 o Api - themoviedb
-o Firebase
-o Github
 
 • Control de versiones 
+o Git
 o GitHub
 
 • Lenguajes 
@@ -24,6 +23,7 @@ o Constraint
 o Coordinator
 o RecyclerView 
 o CustomView
+o Swipe to refresh
 
 • Imágenes
 o Glide
@@ -61,3 +61,5 @@ o Build types
 
 • Unit test
 o Mockito
+o Robolectric
+
