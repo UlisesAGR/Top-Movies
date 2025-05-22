@@ -72,7 +72,7 @@ class MoviesActivity : AppCompatActivity() {
         collect(moviesViewModel.moviesUiState) { state ->
             when (state) {
                 is MoviesUiState.Loading -> {
-                    statusLoading(state.isLoading)
+                    setStatusLoading(state.isLoading)
                 }
                 is MoviesUiState.Error -> {
                     binding.moviesEmptyState.show()
@@ -93,7 +93,7 @@ class MoviesActivity : AppCompatActivity() {
         }
     }
 
-    private fun statusLoading(isLoading: Boolean) = with(binding) {
+    private fun setStatusLoading(isLoading: Boolean) = with(binding) {
         if (isLoading) moviesProgressBar.show()
         else moviesProgressBar.gone()
     }

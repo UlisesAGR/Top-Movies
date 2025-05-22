@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
         collect(loginViewModel.loginUiState) { state ->
             when (state) {
                 is LoginUiState.Loading -> {
-                    statusLoading(state.isLoading)
+                    setStatusLoading(state.isLoading)
                 }
                 is LoginUiState.StatusLoginForm -> {
                     validateStatusLoginForm(state.status)
@@ -77,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun statusLoading(isLoading: Boolean) = with(binding) {
+    private fun setStatusLoading(isLoading: Boolean) = with(binding) {
         if (isLoading) loginProgressBar.show()
         else loginProgressBar.gone()
     }
