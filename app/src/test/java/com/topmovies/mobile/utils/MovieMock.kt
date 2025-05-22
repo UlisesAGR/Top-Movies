@@ -14,13 +14,22 @@ import retrofit2.Response
 
 object MovieMock {
 
+    val movieEntityMapper = MovieEntity(
+        id = 0,
+        title = "Movie",
+        releaseDate = "10-03-1200",
+        overview = "Description",
+        voteAverage = 0f,
+        posterPath = "https://image.tmdb.org/t/p/w500image.jpg",
+    )
+
     val movieEntity = MovieEntity(
         id = 0,
         title = "Movie",
         releaseDate = "10-03-1200",
         overview = "Description",
         voteAverage = 0f,
-        posterPath = "www.url.com",
+        posterPath = "image.jpg",
     )
 
     val moviesEntity = listOf(
@@ -30,7 +39,7 @@ object MovieMock {
             releaseDate = "10-03-1200",
             overview = "Description",
             voteAverage = 0f,
-            posterPath = "www.url.com",
+            posterPath = "image.jpg",
         ),
         MovieEntity(
             id = 2,
@@ -38,7 +47,7 @@ object MovieMock {
             releaseDate = "10-03-1200",
             overview = "Description",
             voteAverage = 0f,
-            posterPath = "www.url.com",
+            posterPath = "image.jpg",
         ),
     )
 
@@ -48,7 +57,7 @@ object MovieMock {
         releaseDate = "10-03-1200",
         overview = "Description",
         voteAverage = 0f,
-        posterPath = "www.url.com",
+        posterPath = "image.jpg",
     )
 
     val moviesResponse = listOf(
@@ -58,7 +67,7 @@ object MovieMock {
             releaseDate = "10-03-1200",
             overview = "Description",
             voteAverage = 0f,
-            posterPath = "www.url.com",
+            posterPath = "image.jpg",
         ),
         MovieResponse(
             id = 2,
@@ -66,8 +75,17 @@ object MovieMock {
             releaseDate = "10-03-1200",
             overview = "Description",
             voteAverage = 0f,
-            posterPath = "www.url.com",
+            posterPath = "image.jpg",
         ),
+    )
+
+    val movieModelMapper = MovieModel(
+        id = 0,
+        title = "Movie",
+        releaseDate = "10-03-1200",
+        overview = "Description",
+        voteAverage = 0f,
+        posterPath = "https://image.tmdb.org/t/p/w500image.jpg",
     )
 
     val movieModel = MovieModel(
@@ -76,7 +94,7 @@ object MovieMock {
         releaseDate = "10-03-1200",
         overview = "Description",
         voteAverage = 0f,
-        posterPath = "www.url.com",
+        posterPath = "image.jpg",
     )
 
     val moviesModel = listOf(
@@ -86,7 +104,7 @@ object MovieMock {
             releaseDate = "10-03-1200",
             overview = "Description",
             voteAverage = 0f,
-            posterPath = "www.url.com",
+            posterPath = "image.jpg",
         ),
         MovieModel(
             id = 2,
@@ -94,7 +112,7 @@ object MovieMock {
             releaseDate = "10-03-1200",
             overview = "Description",
             voteAverage = 0f,
-            posterPath = "www.url.com",
+            posterPath = "image.jpg",
         ),
     )
 
