@@ -43,7 +43,7 @@ class MoviesNetworkSourceTest {
     }
 
     @Test
-    fun `Get Top Rated Movies from Network Test`(): Unit = runTest {
+    fun `Get Top Rated Movies From Network Test`(): Unit = runTest {
         val expected = moviesResponse
         // Given
         `when`(moviesService.getTopRatedMovies()).thenReturn(moviesDataResponse)
@@ -54,7 +54,7 @@ class MoviesNetworkSourceTest {
     }
 
     @Test
-    fun `Get Movie By Id from Network Test`(): Unit = runTest {
+    fun `Get Movie By Id From Network Test`(): Unit = runTest {
         val expected = movieResponse
         // Given
         `when`(moviesService.getMovieById(movieId = 0)).thenReturn(movieDataResponse)

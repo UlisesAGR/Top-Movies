@@ -54,7 +54,7 @@ class MoviesViewModelTest {
     }
 
     @Test
-    fun `Get Top Rated Movies from Use Case Test`(): Unit = runTest {
+    fun `Get Top Rated Movies From Use Case Test`(): Unit = runTest {
         val expected = moviesModel
         // Given
         `when`(getTopRatedMoviesUseCase()).thenReturn(moviesModelFlow)
@@ -71,7 +71,7 @@ class MoviesViewModelTest {
     }
 
     @Test
-    fun `Get Movie By Id from Use Case Test`(): Unit = runTest {
+    fun `Get Movie By Id From Use Case Test`(): Unit = runTest {
         val expected = movieModel
         // Given
         `when`(getMovieByIdUseCase(movieId = 0)).thenReturn(movieModelFlow)

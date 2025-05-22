@@ -52,7 +52,7 @@ class MoviesLocalSourceTest {
     }
 
     @Test
-    fun `Insert All Movies in Database And Get Test`(): Unit = runTest {
+    fun `Insert All Movies In Database And Get Test`(): Unit = runTest {
         val expected = movieEntity
         // Given
         moviesLocalSourceImpl.insertAll(moviesEntity)
@@ -63,7 +63,7 @@ class MoviesLocalSourceTest {
     }
 
     @Test
-    fun `Insert All Movies in Database And Get By Id Test`(): Unit = runTest {
+    fun `Insert All Movies In Database And Get By Id Test`(): Unit = runTest {
         val expected = movieEntity
         // Given
         moviesLocalSourceImpl.insertAll(moviesEntity)
