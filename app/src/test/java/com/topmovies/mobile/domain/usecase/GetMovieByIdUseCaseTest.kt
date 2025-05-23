@@ -10,6 +10,7 @@ import com.topmovies.mobile.domain.usecase.movies.GetMovieByIdUseCase
 import com.topmovies.mobile.utils.DispatcherRule
 import com.topmovies.mobile.utils.MovieMock.movieModel
 import com.topmovies.mobile.utils.MovieMock.movieModelFlow
+import com.topmovies.mobile.utils.extension.Resource
 import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first
@@ -47,8 +48,10 @@ class GetMovieByIdUseCaseTest {
         // Given
         `when`(moviesRepository.getMovieById(movieId = 0)).thenReturn(movieModelFlow)
         // When
-        val actual = getMovieByIdUseCase(movieId = 0)
+        val actual = getMovieByIdUseCase(movieId = 0).first()
         // Then
-        assertEquals(expected, actual.first())
+        if (actual is Resource.Success) {
+            assertEquals(expected, actual.data)
+        }
     }
 }

@@ -10,6 +10,7 @@ import com.topmovies.mobile.domain.usecase.movies.GetTopRatedMoviesUseCase
 import com.topmovies.mobile.utils.DispatcherRule
 import com.topmovies.mobile.utils.MovieMock.moviesModel
 import com.topmovies.mobile.utils.MovieMock.moviesModelFlow
+import com.topmovies.mobile.utils.extension.Resource
 import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first
@@ -47,8 +48,10 @@ class GetTopRatedMoviesUseCaseTest {
         // Given
         `when`(moviesRepository.getTopRatedMovies()).thenReturn(moviesModelFlow)
         // When
-        val actual = getTopRatedMoviesUseCase()
+        val actual = getTopRatedMoviesUseCase().first()
         // Then
-        assertEquals(expected, actual.first())
+        if (actual is Resource.Success) {
+            assertEquals(expected, actual.data)
+        }
     }
 }

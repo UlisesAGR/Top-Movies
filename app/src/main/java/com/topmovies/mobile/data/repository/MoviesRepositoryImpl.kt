@@ -11,7 +11,7 @@ import com.topmovies.mobile.domain.mapper.toDomain
 import com.topmovies.mobile.domain.mapper.toEntity
 import com.topmovies.mobile.domain.model.movies.MovieModel
 import com.topmovies.mobile.domain.repository.MoviesRepository
-import com.topmovies.mobile.utils.extension.NetworkException
+import com.topmovies.mobile.utils.extension.Resource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -24,34 +24,36 @@ class MoviesRepositoryImpl @Inject constructor(
     private val dispatcher: CoroutineDispatcher,
 ) : MoviesRepository {
 
-    override suspend fun getTopRatedMovies(): Flow<List<MovieModel>> = flow {
+    override suspend fun getTopRatedMovies(): Flow<Resource<List<MovieModel>>> = flow {
+        emit(Resource.Loading)
         val localMovies = moviesLocalSource.getMovies()
         if (localMovies.isNotEmpty()) {
-            emit(localMovies.map { movie -> movie.toDomain() })
+            emit(Resource.Success(localMovies.map { movie -> movie.toDomain() }))
         } else {
             val response = moviesNetworkSource.getTopRatedMovies()
             if (response.isSuccessful) {
                 val movies = response.body()?.results ?: emptyList()
                 moviesLocalSource.insertAll(movies.map { movie -> movie.toEntity() })
-                emit(movies.map { movie -> movie.toDomain() })
+                emit(Resource.Success(movies.map { movie -> movie.toDomain() }))
             } else {
-                val error = response.errorBody()?.string()
-                throw NetworkException(error)
+                val error = response.errorBody().toString()
+                emit(Resource.Error(error))
             }
         }
     }.flowOn(dispatcher)
 
-    override suspend fun getMovieById(movieId: Int): Flow<MovieModel?> = flow {
+    override suspend fun getMovieById(movieId: Int): Flow<Resource<MovieModel?>> = flow {
+        emit(Resource.Loading)
         val localMovie = moviesLocalSource.getMovieById(movieId)
         localMovie?.let {
-            emit(localMovie.toDomain())
+            emit(Resource.Success(localMovie.toDomain()))
         } ?: run {
             val response = moviesNetworkSource.getMovieById(movieId)
             if (response.isSuccessful) {
-                emit(response.body()?.toDomain())
+                emit(Resource.Success(response.body()?.toDomain()))
             } else {
-                val error = response.errorBody()?.string()
-                throw NetworkException(error)
+                val error = response.errorBody().toString()
+                emit(Resource.Error(error))
             }
         }
     }.flowOn(dispatcher)

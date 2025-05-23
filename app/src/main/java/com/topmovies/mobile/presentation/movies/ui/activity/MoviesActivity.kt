@@ -79,18 +79,18 @@ class MoviesActivity : AppCompatActivity() {
                         movies = state.movies,
                         onChanged = { itemCount ->
                             validateEmptyState(itemCount)
-                        }
+                        },
                     )
                 }
                 is MoviesUiState.Movie -> {
                     showDetailDialog(state.movie)
                 }
-                is MoviesUiState.ErrorMovies -> {
+                is MoviesUiState.ErrorGetTopRatedMovies -> {
                     binding.moviesEmptyState.show()
-                    toast(toUserMessage(state.cause))
+                    toast(toUserMessage(state.cause, state.message))
                 }
-                is MoviesUiState.ErrorMovie -> {
-                    toast(toUserMessage(state.cause))
+                is MoviesUiState.ErrorGetMovieById -> {
+                    toast(toUserMessage(state.cause, state.message))
                 }
             }
         }
@@ -104,10 +104,10 @@ class MoviesActivity : AppCompatActivity() {
     private fun validateEmptyState(itemCount: Int) = with(binding) {
         if (itemCount == 0) {
             moviesEmptyState.show()
-            moviesRecyclerView.gone()
+            moviesLinearLayout.gone()
         } else {
             moviesEmptyState.gone()
-            moviesRecyclerView.show()
+            moviesLinearLayout.show()
         }
     }
 

@@ -10,7 +10,6 @@ import com.topmovies.mobile.domain.usecase.movies.GetMovieByIdUseCase
 import com.topmovies.mobile.domain.usecase.movies.GetTopRatedMoviesUseCase
 import com.topmovies.mobile.presentation.movies.viewmodel.MoviesUiState
 import com.topmovies.mobile.presentation.movies.viewmodel.MoviesViewModel
-import com.topmovies.mobile.util.Constants.MOVIES_COUNT
 import com.topmovies.mobile.utils.DispatcherRule
 import com.topmovies.mobile.utils.MovieMock.movieModel
 import com.topmovies.mobile.utils.MovieMock.movieModelFlow
@@ -63,8 +62,7 @@ class MoviesViewModelTest {
             moviesViewModel.getTopRatedMovies()
             advanceUntilIdle()
             // Then
-            assertEquals(MoviesUiState.Loading(isLoading = true), awaitItem())
-            assertEquals(MoviesUiState.Movies(expected.take(MOVIES_COUNT)), awaitItem())
+            assertEquals(MoviesUiState.Movies(expected), awaitItem())
             assertEquals(MoviesUiState.Loading(isLoading = false), awaitItem())
             cancelAndIgnoreRemainingEvents()
         }
@@ -80,7 +78,6 @@ class MoviesViewModelTest {
             moviesViewModel.getMovieById(movieId = 0)
             advanceUntilIdle()
             // Then
-            assertEquals(MoviesUiState.Loading(isLoading = true), awaitItem())
             assertEquals(MoviesUiState.Movie(expected), awaitItem())
             assertEquals(MoviesUiState.Loading(isLoading = false), awaitItem())
             cancelAndIgnoreRemainingEvents()
