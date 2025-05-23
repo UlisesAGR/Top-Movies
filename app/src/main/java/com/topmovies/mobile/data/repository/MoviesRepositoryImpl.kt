@@ -48,8 +48,7 @@ class MoviesRepositoryImpl @Inject constructor(
         } ?: run {
             val response = moviesNetworkSource.getMovieById(movieId)
             if (response.isSuccessful) {
-                val movie = response.body()?.toDomain()
-                emit(movie)
+                emit(response.body()?.toDomain())
             } else {
                 val error = response.errorBody()?.string()
                 throw NetworkException(error)
