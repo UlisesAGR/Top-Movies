@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.topmovies.mobile.domain.usecase.movies.GetMovieByIdUseCase
 import com.topmovies.mobile.domain.usecase.movies.GetTopRatedMoviesUseCase
 import com.topmovies.mobile.util.Constants.MOVIES_COUNT
+import com.topmovies.mobile.presentation.provider.ErrorMessageProvider
 import com.topmovies.mobile.utils.extension.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -22,6 +23,7 @@ import javax.inject.Inject
 class MoviesViewModel @Inject constructor(
     private val getTopRatedMoviesUseCase: GetTopRatedMoviesUseCase,
     private val getMovieByIdUseCase: GetMovieByIdUseCase,
+    private val errorMessageProvider: ErrorMessageProvider,
 ) : ViewModel() {
 
     private var _moviesUiState = MutableSharedFlow<MoviesUiState>()
@@ -31,7 +33,7 @@ class MoviesViewModel @Inject constructor(
         getTopRatedMoviesUseCase()
             .catch { error ->
                 _moviesUiState.apply {
-                    emit(MoviesUiState.ErrorGetTopRatedMovies(cause = error))
+                    emit(MoviesUiState.ErrorGetTopRatedMovies(message = errorMessageProvider.getUserMessage(error)))
                     emit(MoviesUiState.Loading(isLoading = false))
                 }
             }
@@ -60,7 +62,7 @@ class MoviesViewModel @Inject constructor(
         getMovieByIdUseCase(movieId)
             .catch { error ->
                 _moviesUiState.apply {
-                    emit(MoviesUiState.ErrorGetMovieById(cause = error))
+                    emit(MoviesUiState.ErrorGetMovieById(message = errorMessageProvider.getUserMessage(error)))
                     emit(MoviesUiState.Loading(isLoading = false))
                 }
             }

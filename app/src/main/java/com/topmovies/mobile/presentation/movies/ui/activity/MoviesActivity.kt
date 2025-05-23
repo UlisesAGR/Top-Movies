@@ -15,7 +15,6 @@ import com.topmovies.mobile.presentation.movies.ui.adapter.MoviesAdapter
 import com.topmovies.mobile.presentation.movies.ui.dialog.DetailDialogConfig
 import com.topmovies.mobile.presentation.movies.viewmodel.MoviesUiState
 import com.topmovies.mobile.presentation.movies.viewmodel.MoviesViewModel
-import com.topmovies.mobile.util.toUserMessage
 import com.topmovies.mobile.utils.extension.collect
 import com.topmovies.mobile.utils.ui.gone
 import com.topmovies.mobile.utils.ui.show
@@ -87,10 +86,10 @@ class MoviesActivity : AppCompatActivity() {
                 }
                 is MoviesUiState.ErrorGetTopRatedMovies -> {
                     binding.moviesEmptyState.show()
-                    toast(toUserMessage(state.cause, state.message))
+                    toast(state.message ?: getString(R.string.please_try_again_later))
                 }
                 is MoviesUiState.ErrorGetMovieById -> {
-                    toast(toUserMessage(state.cause, state.message))
+                    toast(state.message ?: getString(R.string.please_try_again_later))
                 }
             }
         }
@@ -104,10 +103,10 @@ class MoviesActivity : AppCompatActivity() {
     private fun validateEmptyState(itemCount: Int) = with(binding) {
         if (itemCount == 0) {
             moviesEmptyState.show()
-            moviesLinearLayout.gone()
+            moviesRecyclerView.gone()
         } else {
             moviesEmptyState.gone()
-            moviesLinearLayout.show()
+            moviesRecyclerView.show()
         }
     }
 
