@@ -97,6 +97,25 @@ object MovieMock {
         posterPath = "image.jpg",
     )
 
+    val moviesModelMapper = listOf(
+        MovieModel(
+            id = 0,
+            title = "Movie",
+            releaseDate = "10-03-1200",
+            overview = "Description",
+            voteAverage = 0f,
+            posterPath = "https://image.tmdb.org/t/p/w500image.jpg",
+        ),
+        MovieModel(
+            id = 2,
+            title = "Movie",
+            releaseDate = "10-03-1200",
+            overview = "Description",
+            voteAverage = 0f,
+            posterPath = "https://image.tmdb.org/t/p/w500image.jpg",
+        ),
+    )
+
     val moviesModel = listOf(
         MovieModel(
             id = 0,

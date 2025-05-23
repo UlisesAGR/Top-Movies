@@ -8,7 +8,9 @@
     <!-- Error -->
     <string name="check_your_internet_connection">Check your internet connection</string>
     <string name="timeout">Timeout</string>
-    <string name="there_are_problems_with_the_servant_try_again_later">There are problems with the servant, try again later</string>
+    <string name="not_found">The requested information was not found</string>
+    <string name="server_error">The server is experiencing issues. Please try again later</string>
+    <string name="generic_http_error">An unexpected error occurred. Please try again</string>
     <string name="please_try_again_later">At the moment we cannot perform this action, please try again later</string>
     <string name="n_a" translatable="false">N/A</string>
 

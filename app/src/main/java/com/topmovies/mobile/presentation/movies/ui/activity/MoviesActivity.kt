@@ -74,10 +74,6 @@ class MoviesActivity : AppCompatActivity() {
                 is MoviesUiState.Loading -> {
                     setStatusLoading(state.isLoading)
                 }
-                is MoviesUiState.Error -> {
-                    binding.moviesEmptyState.show()
-                    toast(toUserMessage(state.cause))
-                }
                 is MoviesUiState.Movies -> {
                     moviesAdapter.setMovies(
                         movies = state.movies,
@@ -88,6 +84,13 @@ class MoviesActivity : AppCompatActivity() {
                 }
                 is MoviesUiState.Movie -> {
                     showDetailDialog(state.movie)
+                }
+                is MoviesUiState.ErrorMovies -> {
+                    binding.moviesEmptyState.show()
+                    toast(toUserMessage(state.cause))
+                }
+                is MoviesUiState.ErrorMovie -> {
+                    toast(toUserMessage(state.cause))
                 }
             }
         }

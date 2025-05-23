@@ -15,6 +15,7 @@ import com.topmovies.mobile.utils.MovieMock.movieModelMapper
 import com.topmovies.mobile.utils.MovieMock.moviesDataResponse
 import com.topmovies.mobile.utils.MovieMock.moviesEntity
 import com.topmovies.mobile.utils.MovieMock.moviesModel
+import com.topmovies.mobile.utils.MovieMock.moviesModelMapper
 import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first
@@ -54,7 +55,7 @@ class MoviesRepositoryTest {
 
     @Test
     fun `Get Top Rated Movies From Network Source Test`(): Unit = runTest {
-        val expected = moviesModel
+        val expected = moviesModelMapper
         // Given
         `when`(moviesLocalSource.getMovies()).thenReturn(emptyList(), moviesEntity)
         `when`(moviesNetworkSource.getTopRatedMovies()).thenReturn(moviesDataResponse)

@@ -20,7 +20,12 @@ fun FragmentActivity.toUserMessage(cause: Throwable?): String {
     return when (cause) {
         is UnknownHostException, is ConnectException, is SocketException -> getString(R.string.check_your_internet_connection)
         is SocketTimeoutException, is TimeoutException -> getString(R.string.timeout)
-        is HttpException -> getString(R.string.there_are_problems_with_the_servant_try_again_later)
+        is HttpException -> when (cause.code()) {
+            404 -> getString(R.string.not_found)
+            500 -> getString(R.string.server_error)
+            else -> getString(R.string.generic_http_error)
+        }
+        is NetworkException -> cause.message ?: getString(R.string.generic_http_error)
         else -> getString(R.string.please_try_again_later)
     }
 }

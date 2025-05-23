@@ -31,7 +31,7 @@ class MoviesViewModel @Inject constructor(
         getTopRatedMoviesUseCase()
             .catch { cause ->
                 _moviesUiState.apply {
-                    emit(MoviesUiState.Error(cause))
+                    emit(MoviesUiState.ErrorMovies(cause))
                     emit(MoviesUiState.Loading(isLoading = false))
                 }
             }
@@ -48,7 +48,7 @@ class MoviesViewModel @Inject constructor(
         getMovieByIdUseCase(movieId)
             .catch { cause ->
                 _moviesUiState.apply {
-                    emit(MoviesUiState.Error(cause))
+                    emit(MoviesUiState.ErrorMovie(cause))
                     emit(MoviesUiState.Loading(isLoading = false))
                 }
             }

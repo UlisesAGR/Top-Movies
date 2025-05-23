@@ -9,7 +9,8 @@ import com.topmovies.mobile.domain.model.movies.MovieModel
 
 sealed class MoviesUiState {
     internal data class Loading(val isLoading: Boolean) : MoviesUiState()
-    internal data class Error(val cause: Throwable?) : MoviesUiState()
     internal data class Movies(val movies: List<MovieModel>) : MoviesUiState()
     internal data class Movie(val movie: MovieModel?) : MoviesUiState()
+    internal data class ErrorMovies(val cause: Throwable?) : MoviesUiState()
+    internal data class ErrorMovie(val cause: Throwable?) : MoviesUiState()
 }

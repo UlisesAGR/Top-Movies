@@ -8,7 +8,9 @@
     <!-- Error -->
     <string name="check_your_internet_connection">Verifica tu conexión a internet</string>
     <string name="timeout">Tiempo de espera agotado</string>
-    <string name="there_are_problems_with_the_servant_try_again_later">Hay problemas con el servidor, intenta nuevamente más tarde</string>
+    <string name="not_found">No se encontró la información solicitada</string>
+    <string name="server_error">El servidor está presentando problemas. Intenta más tarde</string>
+    <string name="generic_http_error">Ocurrió un error inesperado. Por favor, intenta nuevamente</string>
     <string name="please_try_again_later">Por el momento no podemos realizar esta acción, por favor intenta más tarde</string>
 
     <!-- Welcome Screen -->
