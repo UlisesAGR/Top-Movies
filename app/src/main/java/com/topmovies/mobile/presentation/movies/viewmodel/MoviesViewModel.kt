@@ -48,8 +48,8 @@ class MoviesViewModel @Inject constructor(
                     }
                     is Resource.Error -> {
                         _moviesUiState.apply {
-                            emit(MoviesUiState.Loading(isLoading = false))
                             emit(MoviesUiState.ErrorGetTopRatedMovies(message = response.message))
+                            emit(MoviesUiState.Loading(isLoading = false))
                         }
                     }
                 }
@@ -77,8 +77,8 @@ class MoviesViewModel @Inject constructor(
                     }
                     is Resource.Error -> {
                         _moviesUiState.apply {
-                            emit(MoviesUiState.Loading(isLoading = false))
                             emit(MoviesUiState.ErrorGetMovieById(message = response.message))
+                            emit(MoviesUiState.Loading(isLoading = false))
                         }
                     }
                 }
