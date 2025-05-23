@@ -11,7 +11,7 @@ import com.topmovies.mobile.domain.mapper.toDomain
 import com.topmovies.mobile.domain.mapper.toEntity
 import com.topmovies.mobile.domain.model.movies.MovieModel
 import com.topmovies.mobile.domain.repository.MoviesRepository
-import com.topmovies.mobile.util.NetworkException
+import com.topmovies.mobile.utils.extension.NetworkException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
