@@ -24,20 +24,23 @@
             android:name=".presentation.movies.ui.activity.MoviesActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
 
         <activity
             android:name="com.topmovies.mobile.presentation.auth.ui.login.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity" />
 
         <activity
             android:name=".presentation.auth.ui.welcome.WelcomeActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Splash.Theme.Starting"
-            android:windowSoftInputMode="stateHidden|adjustPan">
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
