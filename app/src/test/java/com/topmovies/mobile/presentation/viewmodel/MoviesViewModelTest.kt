@@ -10,7 +10,7 @@ import com.topmovies.mobile.domain.usecase.movies.GetMovieByIdUseCase
 import com.topmovies.mobile.domain.usecase.movies.GetTopRatedMoviesUseCase
 import com.topmovies.mobile.presentation.movies.viewmodel.MoviesUiState
 import com.topmovies.mobile.presentation.movies.viewmodel.MoviesViewModel
-import com.topmovies.mobile.presentation.provider.ErrorMessageProvider
+import com.topmovies.mobile.util.provider.ErrorMessageProvider
 import com.topmovies.mobile.utils.DispatcherRule
 import com.topmovies.mobile.utils.MovieMock.movieModel
 import com.topmovies.mobile.utils.MovieMock.movieModelFlow

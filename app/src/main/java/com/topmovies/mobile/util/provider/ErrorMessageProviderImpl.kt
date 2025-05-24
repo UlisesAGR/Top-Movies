@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
-package com.topmovies.mobile.presentation.provider
+package com.topmovies.mobile.util.provider
 
 import android.content.Context
 import com.topmovies.mobile.R

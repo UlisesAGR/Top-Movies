@@ -6,8 +6,8 @@
 package com.topmovies.mobile.di.general
 
 import android.content.Context
-import com.topmovies.mobile.presentation.provider.ErrorMessageProvider
-import com.topmovies.mobile.presentation.provider.ErrorMessageProviderImpl
+import com.topmovies.mobile.util.provider.ErrorMessageProvider
+import com.topmovies.mobile.util.provider.ErrorMessageProviderImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

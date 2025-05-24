@@ -10,7 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.topmovies.mobile.domain.usecase.movies.GetMovieByIdUseCase
 import com.topmovies.mobile.domain.usecase.movies.GetTopRatedMoviesUseCase
 import com.topmovies.mobile.util.Constants.MOVIES_COUNT
-import com.topmovies.mobile.presentation.provider.ErrorMessageProvider
+import com.topmovies.mobile.util.provider.ErrorMessageProvider
 import com.topmovies.mobile.utils.extension.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
