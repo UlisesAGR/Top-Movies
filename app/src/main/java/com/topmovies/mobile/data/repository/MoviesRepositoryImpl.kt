@@ -49,7 +49,15 @@ class MoviesRepositoryImpl @Inject constructor(
         if (localMovie != null) {
             emit(Success(localMovie.toDomain()))
         } else {
-            moviesNetworkSource.getMovieById(movieId)
+            when (val response = moviesNetworkSource.getMovieById(movieId)) {
+                is Success -> {
+                    val movie = response.data
+                    emit(Success(movie?.toDomain()))
+                }
+                is Error -> {
+                    emit(Error(response.code, response.message))
+                }
+            }
         }
     }.flowOn(dispatcher)
 }
