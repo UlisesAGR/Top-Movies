@@ -59,6 +59,8 @@ dependencies {
     implementation(libs.com.hilt)
     implementation(libs.test.hilt)
     ksp(libs.com.hilt.compiler)
+    implementation(libs.com.okhttp3)
+    implementation(libs.bundles.com.retrofit.libs)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.legacy.support)

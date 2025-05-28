@@ -7,7 +7,7 @@ package com.topmovies.mobile.domain.usecase.movies
 
 import com.topmovies.mobile.domain.model.movies.MovieModel
 import com.topmovies.mobile.domain.repository.MoviesRepository
-import com.topmovies.mobile.utils.extension.Resource
+import com.topmovies.mobile.utils.safe.Resource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

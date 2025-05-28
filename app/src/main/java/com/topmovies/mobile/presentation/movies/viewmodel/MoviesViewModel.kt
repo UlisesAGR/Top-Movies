@@ -9,9 +9,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.topmovies.mobile.domain.usecase.movies.GetMovieByIdUseCase
 import com.topmovies.mobile.domain.usecase.movies.GetTopRatedMoviesUseCase
+import com.topmovies.mobile.presentation.movies.viewmodel.MoviesUiState.ErrorGetMovieById
+import com.topmovies.mobile.presentation.movies.viewmodel.MoviesUiState.ErrorGetTopRatedMovies
+import com.topmovies.mobile.presentation.movies.viewmodel.MoviesUiState.Loading
+import com.topmovies.mobile.presentation.movies.viewmodel.MoviesUiState.Movie
+import com.topmovies.mobile.presentation.movies.viewmodel.MoviesUiState.Movies
 import com.topmovies.mobile.util.Constants.MOVIES_COUNT
 import com.topmovies.mobile.util.provider.ErrorMessageProvider
-import com.topmovies.mobile.utils.extension.Resource
+import com.topmovies.mobile.utils.safe.Resource.Error
+import com.topmovies.mobile.utils.safe.Resource.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -30,28 +36,26 @@ class MoviesViewModel @Inject constructor(
     val moviesUiState: SharedFlow<MoviesUiState> = _moviesUiState
 
     fun getTopRatedMovies() = viewModelScope.launch {
+        _moviesUiState.emit(Loading(isLoading = true))
         getTopRatedMoviesUseCase()
             .catch { error ->
                 _moviesUiState.apply {
-                    emit(MoviesUiState.ErrorGetTopRatedMovies(message = errorMessageProvider.getUserMessage(error)))
-                    emit(MoviesUiState.Loading(isLoading = false))
+                    emit(ErrorGetTopRatedMovies(message = errorMessageProvider.getUserMessage(error)))
+                    emit(Loading(isLoading = false))
                 }
             }
             .collect { response ->
                 when (response) {
-                    is Resource.Loading -> {
-                        _moviesUiState.emit(MoviesUiState.Loading(isLoading = true))
-                    }
-                    is Resource.Success -> {
+                    is Success -> {
                         _moviesUiState.apply {
-                            emit(MoviesUiState.Movies(movies = response.data.take(MOVIES_COUNT)))
-                            emit(MoviesUiState.Loading(isLoading = false))
+                            emit(Movies(movies = response.data?.take(MOVIES_COUNT) ?: emptyList()))
+                            emit(Loading(isLoading = false))
                         }
                     }
-                    is Resource.Error -> {
+                    is Error -> {
                         _moviesUiState.apply {
-                            emit(MoviesUiState.ErrorGetTopRatedMovies(message = response.message))
-                            emit(MoviesUiState.Loading(isLoading = false))
+                            emit(ErrorGetTopRatedMovies(message = response.message))
+                            emit(Loading(isLoading = false))
                         }
                     }
                 }
@@ -59,28 +63,26 @@ class MoviesViewModel @Inject constructor(
     }
 
     fun getMovieById(movieId: Int) = viewModelScope.launch {
+        _moviesUiState.emit(Loading(isLoading = true))
         getMovieByIdUseCase(movieId)
             .catch { error ->
                 _moviesUiState.apply {
-                    emit(MoviesUiState.ErrorGetMovieById(message = errorMessageProvider.getUserMessage(error)))
-                    emit(MoviesUiState.Loading(isLoading = false))
+                    emit(ErrorGetMovieById(message = errorMessageProvider.getUserMessage(error)))
+                    emit(Loading(isLoading = false))
                 }
             }
             .collect { response ->
                 when (response) {
-                    is Resource.Loading -> {
-                        _moviesUiState.emit(MoviesUiState.Loading(isLoading = true))
-                    }
-                    is Resource.Success -> {
+                    is Success -> {
                         _moviesUiState.apply {
-                            emit(MoviesUiState.Movie(movie = response.data))
-                            emit(MoviesUiState.Loading(isLoading = false))
+                            emit(Movie(movie = response.data))
+                            emit(Loading(isLoading = false))
                         }
                     }
-                    is Resource.Error -> {
+                    is Error -> {
                         _moviesUiState.apply {
-                            emit(MoviesUiState.ErrorGetMovieById(message = response.message))
-                            emit(MoviesUiState.Loading(isLoading = false))
+                            emit(ErrorGetMovieById(message = response.message))
+                            emit(Loading(isLoading = false))
                         }
                     }
                 }

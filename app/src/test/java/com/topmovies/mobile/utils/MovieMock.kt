@@ -9,7 +9,7 @@ import com.topmovies.mobile.data.local.model.MovieEntity
 import com.topmovies.mobile.data.netwotk.model.MovieDataResponse
 import com.topmovies.mobile.data.netwotk.model.MovieResponse
 import com.topmovies.mobile.domain.model.movies.MovieModel
-import com.topmovies.mobile.utils.extension.Resource
+import com.topmovies.mobile.utils.safe.Resource
 import kotlinx.coroutines.flow.flowOf
 import retrofit2.Response
 
@@ -135,6 +135,12 @@ object MovieMock {
             posterPath = "image.jpg",
         ),
     )
+
+    val moviesResource: Resource<List<MovieResponse>> =
+        Resource.Success(moviesResponse)
+
+    val movieResource: Resource<MovieResponse> =
+        Resource.Success(movieResponse)
 
     val moviesDataResponse: Response<MovieDataResponse> =
         Response.success(MovieDataResponse(results = moviesResponse))

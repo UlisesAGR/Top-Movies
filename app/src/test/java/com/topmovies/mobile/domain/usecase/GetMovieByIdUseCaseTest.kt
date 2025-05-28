@@ -10,7 +10,7 @@ import com.topmovies.mobile.domain.usecase.movies.GetMovieByIdUseCase
 import com.topmovies.mobile.utils.DispatcherRule
 import com.topmovies.mobile.utils.MovieMock.movieModel
 import com.topmovies.mobile.utils.MovieMock.movieModelFlow
-import com.topmovies.mobile.utils.extension.Resource
+import com.topmovies.mobile.utils.safe.Resource
 import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first

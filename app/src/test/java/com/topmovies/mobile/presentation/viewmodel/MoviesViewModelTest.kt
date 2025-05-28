@@ -67,6 +67,7 @@ class MoviesViewModelTest {
             moviesViewModel.getTopRatedMovies()
             advanceUntilIdle()
             // Then
+            assertEquals(MoviesUiState.Loading(isLoading = true), awaitItem())
             assertEquals(MoviesUiState.Movies(expected), awaitItem())
             assertEquals(MoviesUiState.Loading(isLoading = false), awaitItem())
             cancelAndIgnoreRemainingEvents()
@@ -83,6 +84,7 @@ class MoviesViewModelTest {
             moviesViewModel.getMovieById(movieId = 0)
             advanceUntilIdle()
             // Then
+            assertEquals(MoviesUiState.Loading(isLoading = true), awaitItem())
             assertEquals(MoviesUiState.Movie(expected), awaitItem())
             assertEquals(MoviesUiState.Loading(isLoading = false), awaitItem())
             cancelAndIgnoreRemainingEvents()

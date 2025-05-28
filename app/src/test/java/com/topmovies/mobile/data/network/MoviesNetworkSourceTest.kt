@@ -50,7 +50,7 @@ class MoviesNetworkSourceTest {
         // When
         val actual = moviesNetworkSourceImpl.getTopRatedMovies()
         // Then
-        assertEquals(expected, actual.body()?.results)
+        assertEquals(expected, actual.data)
     }
 
     @Test
@@ -61,6 +61,6 @@ class MoviesNetworkSourceTest {
         // When
         val actual = moviesNetworkSourceImpl.getMovieById(movieId = 0)
         // Then
-        assertEquals(expected, actual.body())
+        assertEquals(expected, actual.data)
     }
 }

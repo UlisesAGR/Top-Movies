@@ -5,11 +5,10 @@
  */
 package com.topmovies.mobile.data.netwotk.source
 
-import com.topmovies.mobile.data.netwotk.model.MovieDataResponse
 import com.topmovies.mobile.data.netwotk.model.MovieResponse
-import retrofit2.Response
+import com.topmovies.mobile.utils.safe.Resource
 
 interface MoviesNetworkSource {
-    suspend fun getTopRatedMovies(): Response<MovieDataResponse>
-    suspend fun getMovieById(movieId: Int): Response<MovieResponse?>
+    suspend fun getTopRatedMovies(): Resource<List<MovieResponse>>
+    suspend fun getMovieById(movieId: Int): Resource<MovieResponse?>
 }

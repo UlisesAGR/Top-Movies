@@ -8,15 +8,15 @@ package com.topmovies.mobile.data.repository
 import com.topmovies.mobile.data.local.source.MoviesLocalSource
 import com.topmovies.mobile.data.netwotk.source.MoviesNetworkSource
 import com.topmovies.mobile.utils.DispatcherRule
-import com.topmovies.mobile.utils.MovieMock.movieDataResponse
 import com.topmovies.mobile.utils.MovieMock.movieEntity
 import com.topmovies.mobile.utils.MovieMock.movieModel
 import com.topmovies.mobile.utils.MovieMock.movieModelMapper
-import com.topmovies.mobile.utils.MovieMock.moviesDataResponse
+import com.topmovies.mobile.utils.MovieMock.movieResource
 import com.topmovies.mobile.utils.MovieMock.moviesEntity
 import com.topmovies.mobile.utils.MovieMock.moviesModel
 import com.topmovies.mobile.utils.MovieMock.moviesModelMapper
-import com.topmovies.mobile.utils.extension.Resource
+import com.topmovies.mobile.utils.MovieMock.moviesResource
+import com.topmovies.mobile.utils.safe.Resource
 import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first
@@ -59,12 +59,12 @@ class MoviesRepositoryTest {
         val expected = moviesModelMapper
         // Given
         `when`(moviesLocalSource.getMovies()).thenReturn(emptyList(), moviesEntity)
-        `when`(moviesNetworkSource.getTopRatedMovies()).thenReturn(moviesDataResponse)
+        `when`(moviesNetworkSource.getTopRatedMovies()).thenReturn(moviesResource)
         // When
         val actual = moviesRepositoryImpl.getTopRatedMovies().first()
         // Then
         if (actual is Resource.Success) {
-            assertEquals(expected, actual)
+            assertEquals(expected, actual.data)
         }
     }
 
@@ -77,7 +77,7 @@ class MoviesRepositoryTest {
         val actual = moviesRepositoryImpl.getTopRatedMovies().first()
         // Then
         if (actual is Resource.Success) {
-            assertEquals(expected, actual)
+            assertEquals(expected, actual.data)
         }
     }
 
@@ -86,12 +86,12 @@ class MoviesRepositoryTest {
         val expected = movieModelMapper
         // Given
         `when`(moviesLocalSource.getMovieById(movieId = 0)).thenReturn(null, movieEntity)
-        `when`(moviesNetworkSource.getMovieById(movieId = 0)).thenReturn(movieDataResponse)
+        `when`(moviesNetworkSource.getMovieById(movieId = 0)).thenReturn(movieResource)
         // When
         val actual = moviesRepositoryImpl.getMovieById(movieId = 0).first()
         // Then
         if (actual is Resource.Success) {
-            assertEquals(expected, actual)
+            assertEquals(expected, actual.data)
         }
     }
 
@@ -104,7 +104,7 @@ class MoviesRepositoryTest {
         val actual = moviesRepositoryImpl.getMovieById(movieId = 0).first()
         // Then
         if (actual is Resource.Success) {
-            assertEquals(expected, actual)
+            assertEquals(expected, actual.data)
         }
     }
 }

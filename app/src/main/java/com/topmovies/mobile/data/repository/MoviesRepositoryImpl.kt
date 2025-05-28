@@ -11,7 +11,9 @@ import com.topmovies.mobile.domain.mapper.toDomain
 import com.topmovies.mobile.domain.mapper.toEntity
 import com.topmovies.mobile.domain.model.movies.MovieModel
 import com.topmovies.mobile.domain.repository.MoviesRepository
-import com.topmovies.mobile.utils.extension.Resource
+import com.topmovies.mobile.utils.safe.Resource
+import com.topmovies.mobile.utils.safe.Resource.Error
+import com.topmovies.mobile.utils.safe.Resource.Success
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -25,36 +27,29 @@ class MoviesRepositoryImpl @Inject constructor(
 ) : MoviesRepository {
 
     override suspend fun getTopRatedMovies(): Flow<Resource<List<MovieModel>>> = flow {
-        emit(Resource.Loading)
         val localMovies = moviesLocalSource.getMovies()
         if (localMovies.isNotEmpty()) {
-            emit(Resource.Success(localMovies.map { movie -> movie.toDomain() }))
+            emit(Success(localMovies.map { movie -> movie.toDomain() }))
         } else {
-            val response = moviesNetworkSource.getTopRatedMovies()
-            if (response.isSuccessful) {
-                val movies = response.body()?.results ?: emptyList()
-                moviesLocalSource.insertAll(movies.map { movie -> movie.toEntity() })
-                emit(Resource.Success(movies.map { movie -> movie.toDomain() }))
-            } else {
-                val error = response.errorBody().toString()
-                emit(Resource.Error(error))
+            when (val response = moviesNetworkSource.getTopRatedMovies()) {
+                is Success -> {
+                    val movies = response.data ?: emptyList()
+                    moviesLocalSource.insertAll(movies.map { it.toEntity() })
+                    emit(Success(movies.map { movie -> movie.toDomain() }))
+                }
+                is Error -> {
+                    emit(Error(response.code, response.message))
+                }
             }
         }
     }.flowOn(dispatcher)
 
     override suspend fun getMovieById(movieId: Int): Flow<Resource<MovieModel?>> = flow {
-        emit(Resource.Loading)
         val localMovie = moviesLocalSource.getMovieById(movieId)
-        localMovie?.let {
-            emit(Resource.Success(localMovie.toDomain()))
-        } ?: run {
-            val response = moviesNetworkSource.getMovieById(movieId)
-            if (response.isSuccessful) {
-                emit(Resource.Success(response.body()?.toDomain()))
-            } else {
-                val error = response.errorBody().toString()
-                emit(Resource.Error(error))
-            }
+        if (localMovie != null) {
+            emit(Success(localMovie.toDomain()))
+        } else {
+            moviesNetworkSource.getMovieById(movieId)
         }
     }.flowOn(dispatcher)
 }

@@ -6,7 +6,7 @@
 package com.topmovies.mobile.domain.repository
 
 import com.topmovies.mobile.domain.model.movies.MovieModel
-import com.topmovies.mobile.utils.extension.Resource
+import com.topmovies.mobile.utils.safe.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {
