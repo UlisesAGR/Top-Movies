@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.com.ksp)
     alias(libs.plugins.com.google.services)
     alias(libs.plugins.com.google.crashlytics)
+    alias(libs.plugins.org.ktlint)
 }
 
 android {

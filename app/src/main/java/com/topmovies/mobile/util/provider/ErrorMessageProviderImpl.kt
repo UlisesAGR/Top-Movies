@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 class ErrorMessageProviderImpl @Inject constructor(
     @ApplicationContext val context: Context,
-): ErrorMessageProvider {
+) : ErrorMessageProvider {
 
     override fun getUserMessage(cause: Throwable?): String = with(context) {
         log(message = cause.toString())
@@ -31,6 +31,7 @@ class ErrorMessageProviderImpl @Inject constructor(
                 500 -> getString(R.string.server_error)
                 else -> getString(R.string.generic_http_error)
             }
+
             else -> getString(R.string.please_try_again_later)
         }
     }

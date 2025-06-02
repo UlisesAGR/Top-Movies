@@ -152,3 +152,4 @@ androidx-navigation = { id = "androidx.navigation.safeargs.kotlin", version.ref 
 com-google-services = { id = "com.google.gms.google-services", version.ref = "plugin-googleServices" }
 com-google-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "plugin-googleCrashlytics" }
 com-ksp = { id = "com.google.devtools.ksp", version.ref = "plugin-ksp" }
+org-ktlint = { id = "ktlint" }

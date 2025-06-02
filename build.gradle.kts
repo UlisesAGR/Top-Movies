@@ -12,4 +12,5 @@ plugins {
     alias(libs.plugins.com.ksp) apply false
     alias(libs.plugins.com.google.services) apply false
     alias(libs.plugins.com.google.crashlytics) apply false
+    alias(libs.plugins.org.ktlint) apply false
 }
