@@ -1,5 +1,5 @@
 /*
- * Database.kt
+ * AppDataBase.kt
  * Created by Ulises Gonzalez
  * Copyright (c) 2025. All rights reserved
  */
@@ -15,6 +15,6 @@ import com.topmovies.mobile.data.local.model.MovieEntity
     version = 1,
     exportSchema = false,
 )
-abstract class Database : RoomDatabase() {
+abstract class AppDataBase : RoomDatabase() {
     abstract fun movieDao(): MovieDao
 }

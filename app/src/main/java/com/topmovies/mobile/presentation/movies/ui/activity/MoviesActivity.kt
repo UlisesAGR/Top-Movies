@@ -96,8 +96,11 @@ class MoviesActivity : AppCompatActivity() {
     }
 
     private fun setStatusLoading(isLoading: Boolean) = with(binding) {
-        if (isLoading) moviesProgressBar.show()
-        else moviesProgressBar.gone()
+        if (isLoading) {
+            moviesProgressBar.show()
+        } else {
+            moviesProgressBar.gone()
+        }
     }
 
     private fun validateEmptyState(itemCount: Int) = with(binding) {

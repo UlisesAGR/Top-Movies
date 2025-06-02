@@ -78,8 +78,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setStatusLoading(isLoading: Boolean) = with(binding) {
-        if (isLoading) loginProgressBar.show()
-        else loginProgressBar.gone()
+        if (isLoading) {
+            loginProgressBar.show()
+        } else {
+            loginProgressBar.gone()
+        }
     }
 
     private fun validateStatusLoginForm(status: LoginStatus) = with(binding) {

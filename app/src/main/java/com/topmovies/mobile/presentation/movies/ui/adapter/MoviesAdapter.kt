@@ -23,7 +23,7 @@ class MoviesAdapter(
         parent: ViewGroup,
         viewType: Int,
     ): MoviesViewHolder = MoviesViewHolder(
-        ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false),
     )
 
     override fun onBindViewHolder(
@@ -42,6 +42,6 @@ class MoviesAdapter(
     ) = withContext(Dispatchers.Main) {
         this@MoviesAdapter.movies = movies
         notifyDataSetChanged()
-        onChanged(movies.size)
+        onChanged(this@MoviesAdapter.movies.size)
     }
 }

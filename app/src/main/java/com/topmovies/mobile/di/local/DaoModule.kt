@@ -6,7 +6,7 @@
 package com.topmovies.mobile.di.local
 
 import com.topmovies.mobile.data.local.dao.MovieDao
-import com.topmovies.mobile.data.local.database.Database
+import com.topmovies.mobile.data.local.database.AppDataBase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,6 +19,6 @@ object DaoModule {
 
     @Provides
     @Singleton
-    fun provideProductDao(database: Database): MovieDao =
+    fun provideProductDao(database: AppDataBase): MovieDao =
         database.movieDao()
 }

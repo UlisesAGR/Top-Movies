@@ -8,7 +8,7 @@ package com.topmovies.mobile.di.local
 import android.content.Context
 import androidx.room.Room
 import com.topmovies.mobile.BuildConfig.DATABASE_NAME
-import com.topmovies.mobile.data.local.database.Database
+import com.topmovies.mobile.data.local.database.AppDataBase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,10 +22,10 @@ object RoomModule {
 
     @Provides
     @Singleton
-    fun provideRoom(@ApplicationContext context: Context) =
+    fun provideAppDataBase(@ApplicationContext context: Context) =
         Room.databaseBuilder(
             context,
-            Database::class.java,
+            AppDataBase::class.java,
             DATABASE_NAME,
         ).fallbackToDestructiveMigration(dropAllTables = true).build()
 }
