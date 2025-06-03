@@ -21,7 +21,7 @@ class ErrorMessageProviderImpl @Inject constructor(
     @ApplicationContext val context: Context,
 ) : ErrorMessageProvider {
 
-    override fun getUserMessage(cause: Throwable?): String = with(context) {
+    override fun getMessage(cause: Throwable?): String = with(context) {
         log(message = cause.toString())
         return when (cause) {
             is UnknownHostException, is ConnectException, is SocketException -> getString(R.string.check_your_internet_connection)

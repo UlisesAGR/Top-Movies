@@ -22,6 +22,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -36,54 +38,38 @@ class MoviesViewModel @Inject constructor(
     val moviesUiState: SharedFlow<MoviesUiState> = _moviesUiState
 
     fun getTopRatedMovies() = viewModelScope.launch {
-        _moviesUiState.emit(Loading(isLoading = true))
         getTopRatedMoviesUseCase()
+            .onStart { _moviesUiState.emit(Loading(isLoading = true)) }
+            .onCompletion { _moviesUiState.emit(Loading(isLoading = false)) }
             .catch { error ->
-                _moviesUiState.apply {
-                    emit(ErrorGetTopRatedMovies(message = errorMessageProvider.getUserMessage(error)))
-                    emit(Loading(isLoading = false))
-                }
+                _moviesUiState.emit(ErrorGetTopRatedMovies(message = errorMessageProvider.getMessage(error)))
             }
             .collect { response ->
                 when (response) {
                     is Success -> {
-                        _moviesUiState.apply {
-                            emit(Movies(movies = response.data?.take(MOVIES_COUNT) ?: emptyList()))
-                            emit(Loading(isLoading = false))
-                        }
+                        _moviesUiState.emit(Movies(movies = response.data?.take(MOVIES_COUNT) ?: emptyList()))
                     }
                     is Error -> {
-                        _moviesUiState.apply {
-                            emit(ErrorGetTopRatedMovies(message = response.message))
-                            emit(Loading(isLoading = false))
-                        }
+                        _moviesUiState.emit(ErrorGetTopRatedMovies(message = response.message))
                     }
                 }
             }
     }
 
     fun getMovieById(movieId: Int) = viewModelScope.launch {
-        _moviesUiState.emit(Loading(isLoading = true))
         getMovieByIdUseCase(movieId)
+            .onStart { _moviesUiState.emit(Loading(isLoading = true)) }
+            .onCompletion { _moviesUiState.emit(Loading(isLoading = false)) }
             .catch { error ->
-                _moviesUiState.apply {
-                    emit(ErrorGetMovieById(message = errorMessageProvider.getUserMessage(error)))
-                    emit(Loading(isLoading = false))
-                }
+                _moviesUiState.emit(ErrorGetMovieById(message = errorMessageProvider.getMessage(error)))
             }
             .collect { response ->
                 when (response) {
                     is Success -> {
-                        _moviesUiState.apply {
-                            emit(Movie(movie = response.data))
-                            emit(Loading(isLoading = false))
-                        }
+                        _moviesUiState.emit(Movie(movie = response.data))
                     }
                     is Error -> {
-                        _moviesUiState.apply {
-                            emit(ErrorGetMovieById(message = response.message))
-                            emit(Loading(isLoading = false))
-                        }
+                        _moviesUiState.emit(ErrorGetMovieById(message = response.message))
                     }
                 }
             }

@@ -6,5 +6,5 @@
 package com.topmovies.mobile.util.provider
 
 interface ErrorMessageProvider {
-    fun getUserMessage(cause: Throwable?): String
+    fun getMessage(cause: Throwable?): String
 }
