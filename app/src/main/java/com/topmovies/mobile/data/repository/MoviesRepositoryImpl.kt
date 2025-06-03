@@ -7,8 +7,6 @@ package com.topmovies.mobile.data.repository
 
 import com.topmovies.mobile.data.local.source.MoviesLocalSource
 import com.topmovies.mobile.data.netwotk.source.MoviesNetworkSource
-import com.topmovies.mobile.domain.mapper.toDomain
-import com.topmovies.mobile.domain.mapper.toEntity
 import com.topmovies.mobile.domain.model.movies.MovieModel
 import com.topmovies.mobile.domain.repository.MoviesRepository
 import com.topmovies.mobile.utils.safe.Resource
@@ -29,13 +27,13 @@ class MoviesRepositoryImpl @Inject constructor(
     override suspend fun getTopRatedMovies(): Flow<Resource<List<MovieModel>>> = flow {
         val localMovies = moviesLocalSource.getMovies()
         if (localMovies.isNotEmpty()) {
-            emit(Success(localMovies.map { movie -> movie.toDomain() }))
+            emit(Success(localMovies))
         } else {
             when (val response = moviesNetworkSource.getTopRatedMovies()) {
                 is Success -> {
                     val movies = response.data ?: emptyList()
-                    moviesLocalSource.insertAll(movies.map { it.toEntity() })
-                    emit(Success(movies.map { movie -> movie.toDomain() }))
+                    moviesLocalSource.insertAll(movies)
+                    emit(Success(movies))
                 }
                 is Error -> {
                     emit(Error(response.code, response.message))
@@ -47,12 +45,12 @@ class MoviesRepositoryImpl @Inject constructor(
     override suspend fun getMovieById(movieId: Int): Flow<Resource<MovieModel?>> = flow {
         val localMovie = moviesLocalSource.getMovieById(movieId)
         if (localMovie != null) {
-            emit(Success(localMovie.toDomain()))
+            emit(Success(localMovie))
         } else {
             when (val response = moviesNetworkSource.getMovieById(movieId)) {
                 is Success -> {
                     val movie = response.data
-                    emit(Success(movie?.toDomain()))
+                    emit(Success(movie))
                 }
                 is Error -> {
                     emit(Error(response.code, response.message))

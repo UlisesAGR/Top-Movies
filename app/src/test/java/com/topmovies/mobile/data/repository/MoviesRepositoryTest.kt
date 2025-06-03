@@ -8,13 +8,9 @@ package com.topmovies.mobile.data.repository
 import com.topmovies.mobile.data.local.source.MoviesLocalSource
 import com.topmovies.mobile.data.netwotk.source.MoviesNetworkSource
 import com.topmovies.mobile.utils.DispatcherRule
-import com.topmovies.mobile.utils.MovieMock.movieEntity
 import com.topmovies.mobile.utils.MovieMock.movieModel
-import com.topmovies.mobile.utils.MovieMock.movieModelMapper
 import com.topmovies.mobile.utils.MovieMock.movieResource
-import com.topmovies.mobile.utils.MovieMock.moviesEntity
 import com.topmovies.mobile.utils.MovieMock.moviesModel
-import com.topmovies.mobile.utils.MovieMock.moviesModelMapper
 import com.topmovies.mobile.utils.MovieMock.moviesResource
 import com.topmovies.mobile.utils.safe.Resource
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -56,9 +52,9 @@ class MoviesRepositoryTest {
 
     @Test
     fun `Get Top Rated Movies From Network Source Test`(): Unit = runTest {
-        val expected = moviesModelMapper
+        val expected = moviesModel
         // Given
-        `when`(moviesLocalSource.getMovies()).thenReturn(emptyList(), moviesEntity)
+        `when`(moviesLocalSource.getMovies()).thenReturn(emptyList(), moviesModel)
         `when`(moviesNetworkSource.getTopRatedMovies()).thenReturn(moviesResource)
         // When
         val actual = moviesRepositoryImpl.getTopRatedMovies().first()
@@ -72,7 +68,7 @@ class MoviesRepositoryTest {
     fun `Get Top Rated Movies From Local Source Test`(): Unit = runTest {
         val expected = moviesModel
         // Given
-        `when`(moviesLocalSource.getMovies()).thenReturn(moviesEntity)
+        `when`(moviesLocalSource.getMovies()).thenReturn(moviesModel)
         // When
         val actual = moviesRepositoryImpl.getTopRatedMovies().first()
         // Then
@@ -83,9 +79,9 @@ class MoviesRepositoryTest {
 
     @Test
     fun `Get Movie By Id From Network Source Test`(): Unit = runTest {
-        val expected = movieModelMapper
+        val expected = movieModel
         // Given
-        `when`(moviesLocalSource.getMovieById(movieId = 0)).thenReturn(null, movieEntity)
+        `when`(moviesLocalSource.getMovieById(movieId = 0)).thenReturn(null, movieModel)
         `when`(moviesNetworkSource.getMovieById(movieId = 0)).thenReturn(movieResource)
         // When
         val actual = moviesRepositoryImpl.getMovieById(movieId = 0).first()
@@ -99,7 +95,7 @@ class MoviesRepositoryTest {
     fun `Get Movie By Id From Local Source Test`(): Unit = runTest {
         val expected = movieModel
         // Given
-        `when`(moviesLocalSource.getMovieById(movieId = 0)).thenReturn(movieEntity)
+        `when`(moviesLocalSource.getMovieById(movieId = 0)).thenReturn(movieModel)
         // When
         val actual = moviesRepositoryImpl.getMovieById(movieId = 0).first()
         // Then

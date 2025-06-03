@@ -8,11 +8,11 @@ package com.topmovies.mobile.data.local
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.topmovies.mobile.data.local.dao.MovieDao
-import com.topmovies.mobile.data.local.database.Database
+import com.topmovies.mobile.data.local.database.AppDataBase
 import com.topmovies.mobile.data.local.source.MoviesLocalSourceImpl
 import com.topmovies.mobile.utils.DispatcherRule
-import com.topmovies.mobile.utils.MovieMock.movieEntity
-import com.topmovies.mobile.utils.MovieMock.moviesEntity
+import com.topmovies.mobile.utils.MovieMock.movieModel
+import com.topmovies.mobile.utils.MovieMock.moviesModel
 import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
@@ -31,7 +31,7 @@ class MoviesLocalSourceTest {
     private lateinit var moviesLocalSourceImpl: MoviesLocalSourceImpl
 
     @Inject
-    lateinit var database: Database
+    lateinit var database: AppDataBase
 
     @Inject
     lateinit var movieDao: MovieDao
@@ -43,7 +43,7 @@ class MoviesLocalSourceTest {
     fun setUp() {
         database = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
-            Database::class.java,
+            AppDataBase::class.java,
         ).allowMainThreadQueries().build()
         movieDao = database.movieDao()
         moviesLocalSourceImpl = MoviesLocalSourceImpl(
@@ -53,9 +53,9 @@ class MoviesLocalSourceTest {
 
     @Test
     fun `Insert All Movies In Database And Get Test`(): Unit = runTest {
-        val expected = movieEntity
+        val expected = movieModel
         // Given
-        moviesLocalSourceImpl.insertAll(moviesEntity)
+        moviesLocalSourceImpl.insertAll(moviesModel)
         // When
         val actual = moviesLocalSourceImpl.getMovies()
         // Then
@@ -64,9 +64,9 @@ class MoviesLocalSourceTest {
 
     @Test
     fun `Insert All Movies In Database And Get By Id Test`(): Unit = runTest {
-        val expected = movieEntity
+        val expected = movieModel
         // Given
-        moviesLocalSourceImpl.insertAll(moviesEntity)
+        moviesLocalSourceImpl.insertAll(moviesModel)
         // When
         val actual = moviesLocalSourceImpl.getMovieById(movieId = 0)
         // Then

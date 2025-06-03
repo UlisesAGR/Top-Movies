@@ -10,6 +10,9 @@ import com.topmovies.mobile.data.local.model.MovieEntity
 import com.topmovies.mobile.data.netwotk.model.MovieResponse
 import com.topmovies.mobile.domain.model.movies.MovieModel
 
+fun MovieModel.toEntity(): MovieEntity =
+    MovieEntity(id, title, releaseDate, overview, voteAverage, posterPath)
+
 fun MovieResponse.toEntity(): MovieEntity =
     MovieEntity(
         id,

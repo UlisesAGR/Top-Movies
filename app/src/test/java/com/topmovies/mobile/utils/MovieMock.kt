@@ -33,25 +33,6 @@ object MovieMock {
         posterPath = "image.jpg",
     )
 
-    val moviesEntity = listOf(
-        MovieEntity(
-            id = 0,
-            title = "Movie",
-            releaseDate = "10-03-1200",
-            overview = "Description",
-            voteAverage = 0f,
-            posterPath = "image.jpg",
-        ),
-        MovieEntity(
-            id = 2,
-            title = "Movie",
-            releaseDate = "10-03-1200",
-            overview = "Description",
-            voteAverage = 0f,
-            posterPath = "image.jpg",
-        ),
-    )
-
     val movieResponse = MovieResponse(
         id = 0,
         title = "Movie",
@@ -61,7 +42,7 @@ object MovieMock {
         posterPath = "image.jpg",
     )
 
-    val moviesResponse = listOf(
+    private val moviesResponse = listOf(
         MovieResponse(
             id = 0,
             title = "Movie",
@@ -136,11 +117,11 @@ object MovieMock {
         ),
     )
 
-    val moviesResource: Resource<List<MovieResponse>> =
-        Resource.Success(moviesResponse)
+    val moviesResource: Resource<List<MovieModel>> =
+        Resource.Success(moviesModel)
 
-    val movieResource: Resource<MovieResponse> =
-        Resource.Success(movieResponse)
+    val movieResource: Resource<MovieModel> =
+        Resource.Success(movieModel)
 
     val moviesDataResponse: Response<MovieDataResponse> =
         Response.success(MovieDataResponse(results = moviesResponse))

@@ -6,19 +6,21 @@
 package com.topmovies.mobile.data.local.source
 
 import com.topmovies.mobile.data.local.dao.MovieDao
-import com.topmovies.mobile.data.local.model.MovieEntity
+import com.topmovies.mobile.domain.mapper.toDomain
+import com.topmovies.mobile.domain.mapper.toEntity
+import com.topmovies.mobile.domain.model.movies.MovieModel
 import javax.inject.Inject
 
 class MoviesLocalSourceImpl @Inject constructor(
     private val movieDao: MovieDao,
 ) : MoviesLocalSource {
 
-    override suspend fun insertAll(movies: List<MovieEntity>) =
-        movieDao.insertAll(movies)
+    override suspend fun insertAll(movies: List<MovieModel>) =
+        movieDao.insertAll(movies.map { movie -> movie.toEntity() })
 
-    override suspend fun getMovies(): List<MovieEntity> =
-        movieDao.getMovies()
+    override suspend fun getMovies(): List<MovieModel> =
+        movieDao.getMovies().map { movie -> movie.toDomain() }
 
-    override suspend fun getMovieById(movieId: Int): MovieEntity? =
-        movieDao.getMovieById(movieId)
+    override suspend fun getMovieById(movieId: Int): MovieModel? =
+        movieDao.getMovieById(movieId)?.toDomain()
 }

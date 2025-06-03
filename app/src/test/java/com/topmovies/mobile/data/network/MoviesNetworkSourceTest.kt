@@ -9,9 +9,9 @@ import com.topmovies.mobile.data.netwotk.service.MoviesService
 import com.topmovies.mobile.data.netwotk.source.MoviesNetworkSourceImpl
 import com.topmovies.mobile.utils.DispatcherRule
 import com.topmovies.mobile.utils.MovieMock.movieDataResponse
-import com.topmovies.mobile.utils.MovieMock.movieResponse
+import com.topmovies.mobile.utils.MovieMock.movieModelMapper
 import com.topmovies.mobile.utils.MovieMock.moviesDataResponse
-import com.topmovies.mobile.utils.MovieMock.moviesResponse
+import com.topmovies.mobile.utils.MovieMock.moviesModelMapper
 import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
@@ -44,7 +44,7 @@ class MoviesNetworkSourceTest {
 
     @Test
     fun `Get Top Rated Movies From Network Test`(): Unit = runTest {
-        val expected = moviesResponse
+        val expected = moviesModelMapper
         // Given
         `when`(moviesService.getTopRatedMovies()).thenReturn(moviesDataResponse)
         // When
@@ -55,7 +55,7 @@ class MoviesNetworkSourceTest {
 
     @Test
     fun `Get Movie By Id From Network Test`(): Unit = runTest {
-        val expected = movieResponse
+        val expected = movieModelMapper
         // Given
         `when`(moviesService.getMovieById(movieId = 0)).thenReturn(movieDataResponse)
         // When
